@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:fruits_app/Core/constants/enums/deviceType.dart';
+import 'package:fruits_app/Core/commonImports/commonImports.dart';
+
 
 
 MyDeviceType getDeviceType(MediaQueryData mediaQuery) {

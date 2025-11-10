@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fruits_app/Core/constants/enums/deviceType.dart';
-import 'package:fruits_app/Core/utils/widgets/infoWidget.dart';
+import 'package:fruits_app/Core/commonImports/commonImports.dart';
 
 class Onboardingwidget extends StatelessWidget {
   final String title;
@@ -22,8 +19,8 @@ class Onboardingwidget extends StatelessWidget {
 
     return Infowidget(builder: (context, deviceInfo) {
       if (deviceInfo.deviceType == MyDeviceType.mobile) {
-        fontSize_title = 24;
-        fontSize_subtitle = 16;
+        fontSize_title = deviceInfo.localHeight * 0.04;
+        fontSize_subtitle = deviceInfo.localHeight * 0.03;
         image_height = deviceInfo.localHeight * 0.6;
         image_width = deviceInfo.localWidth * 0.8;
       } else if (deviceInfo.deviceType == MyDeviceType.tablet) {

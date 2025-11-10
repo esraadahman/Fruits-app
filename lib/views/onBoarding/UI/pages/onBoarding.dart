@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:fruits_app/Core/constants/colors.dart';
-import 'package:fruits_app/Core/utils/widgets/infoWidget.dart';
-import 'package:fruits_app/views/onBoarding/widgets/OnBoardingWidget.dart';
+import 'package:fruits_app/Core/commonImports/commonImports.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
@@ -38,7 +35,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               Align(
                 alignment: Alignment.topRight,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.navigateTo(Welcomescreen());
+                  },
                   child: Text(
                     "Skip",
                     style: TextStyle(
@@ -88,6 +87,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 child: ElevatedButton(
                   onPressed: () {
                     if (currentIndex == pages.length - 1) {
+                      context.navigateTo(Welcomescreen());
                     } else {
                       _pageController.nextPage(
                         duration: const Duration(milliseconds: 400),

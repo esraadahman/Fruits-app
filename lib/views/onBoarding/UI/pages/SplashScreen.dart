@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:fruits_app/Core/utils/widgets/infoWidget.dart';
-import 'package:fruits_app/views/onBoarding/pages/onBoarding.dart';
+import 'package:fruits_app/Core/commonImports/commonImports.dart';
+
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

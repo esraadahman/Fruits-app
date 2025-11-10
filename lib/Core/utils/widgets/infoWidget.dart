@@ -1,8 +1,5 @@
-import 'package:device_preview/device_preview.dart';
-import 'package:flutter/material.dart';
-import 'package:fruits_app/Core/constants/sizeClass.dart';
-import 'package:fruits_app/Core/utils/functions/getDeviceType.dart';
-import 'package:fruits_app/Core/utils/models/deviceInfo.dart';
+import 'package:fruits_app/Core/commonImports/commonImports.dart';
+
 
 
 class Infowidget extends StatelessWidget {
