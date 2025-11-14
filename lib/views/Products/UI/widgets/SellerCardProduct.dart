@@ -1,8 +1,9 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
+import 'package:fruits_app/views/Home/UI/widgets/subWidgets/imageCircleAvater.dart';
 import 'package:fruits_app/views/Home/UI/widgets/subWidgets/pointWidget.dart';
 
-class Productcard extends StatelessWidget {
-  const Productcard(
+class SellerCardProduct extends StatelessWidget {
+  const SellerCardProduct(
       {super.key,
       required this.sellerName,
       required this.deliveryCharges,
@@ -46,11 +47,7 @@ class Productcard extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CircleAvatar(
-            radius: width * 0.1,
-            backgroundColor: Colors.grey.withOpacity(0.05),
-            backgroundImage: AssetImage(imagePath),
-          ),
+          imageCircleAvater(width: width, imagePath: imagePath),
           size.width(width * 0.04),
           Expanded(
             child: Column(
@@ -72,46 +69,46 @@ class Productcard extends StatelessWidget {
                   ],
                 ),
                 size.height(height * 0.008),
-
-                Expanded(
-                  child: Text(
-                    "Delivery : $deliveryCharges  to $time min",
-                    style: TextStyle(
-                      color: Colors.grey.shade700,
-                      fontSize: width * 0.03,
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+                Text(
+                  "Delivery : $deliveryCharges  to $time min",
+                  style: TextStyle(
+                    color: Colors.grey.shade700,
+                    fontSize: width * 0.03,
                   ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
+
                 //   size.height(height * 0.02),
 
-                Row(
-                  children: [
-                    Pointwidget(fontsize: width * 0.05),
-                    size.width(width * .01),
-                    Text(
-                      status,
-                      style: TextStyle(
-                        color: status.toLowerCase() == "open"
-                            ? const Color.fromARGB(255, 39, 213, 45)
-                            : Colors.red,
-                        fontWeight: FontWeight.w600,
-                        fontSize: width * 0.035,
+                Expanded(
+                  child: Row(
+                    children: [
+                      Pointwidget(fontsize: width * 0.05),
+                      size.width(width * .01),
+                      Text(
+                        status,
+                        style: TextStyle(
+                          color: status.toLowerCase() == "open"
+                              ? const Color.fromARGB(255, 39, 213, 45)
+                              : Colors.red,
+                          fontWeight: FontWeight.w600,
+                          fontSize: width * 0.035,
+                        ),
                       ),
-                    ),
-                    size.width(width * .04),
-                    Pointwidget(fontsize: width * 0.05),
-                    size.width(width * .01),
-                    Text(
-                      "4.5",
-                      style: TextStyle(
-                          fontSize: width * .04,
-                          color: Colors.black.withOpacity(.3),
-                          fontWeight: FontWeight.normal),
-                    ),
-                  ],
-                ),
+                      size.width(width * .03),
+                      Pointwidget(fontsize: width * 0.05),
+                      size.width(width * .01),
+                      Text(
+                        "4.5",
+                        style: TextStyle(
+                            fontSize: width * .04,
+                            color: Colors.black.withOpacity(.3),
+                            fontWeight: FontWeight.normal),
+                      ),
+                    ],
+                  ),
+                )
               ],
             ),
           ),

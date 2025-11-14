@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
 import 'package:fruits_app/Core/constants/colors.dart';
 import 'package:fruits_app/views/Home/UI/widgets/PonitsWidget.dart';
+import 'package:fruits_app/views/Home/UI/widgets/subWidgets/imageCircleAvater.dart';
 import 'package:fruits_app/views/Home/UI/widgets/subWidgets/pointWidget.dart';
 
 class SellerCard extends StatelessWidget {
@@ -51,11 +52,7 @@ class SellerCard extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CircleAvatar(
-            radius: width * 0.1,
-            backgroundColor: Colors.grey.withOpacity(0.05),
-            backgroundImage: AssetImage(imagePath),
-          ),
+          imageCircleAvater(width: width, imagePath: imagePath),
           size.width(width * 0.04),
           Expanded(
             child: Column(
@@ -115,53 +112,54 @@ class SellerCard extends StatelessWidget {
                   ],
                 ),
                 //   size.height(height * 0.02),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Pointwidget(fontsize: width * 0.05),
-                        Text(
-                          status,
-                          style: TextStyle(
-                            color: status.toLowerCase() == "open"
-                                ? const Color.fromARGB(255, 39, 213, 45)
-                                : Colors.red,
-                            fontWeight: FontWeight.w600,
-                            fontSize: width * 0.035,
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Pointwidget(fontsize: width * 0.05),
+                          Text(
+                            status,
+                            style: TextStyle(
+                              color: status.toLowerCase() == "open"
+                                  ? const Color.fromARGB(255, 39, 213, 45)
+                                  : Colors.red,
+                              fontWeight: FontWeight.w600,
+                              fontSize: width * 0.035,
+                            ),
                           ),
-                        ),
-                        size.width(width * .023),
-                        Pointwidget(fontsize: width * 0.05),
-                        Text(
-                          orderName,
-                          style: TextStyle(
-                            color: AppColors.CustomColor,
-                            fontWeight: FontWeight.w600,
-                            fontSize: width * 0.035,
+                          size.width(width * .023),
+                          Pointwidget(fontsize: width * 0.05),
+                          Text(
+                            orderName,
+                            style: TextStyle(
+                              color: AppColors.CustomColor,
+                              fontWeight: FontWeight.w600,
+                              fontSize: width * 0.035,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          distance,
-                          style: TextStyle(
-                            fontSize: width * 0.035,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.green,
+                        ],
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            distance,
+                            style: TextStyle(
+                              fontSize: width * 0.035,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.green,
+                            ),
                           ),
-                        ),
-                        size.width(width * .02),
-                        Icon(Icons.location_on,
-                            color: Colors.green, size: width * .04),
-                      ],
-                    )
-                  ],
-                ),
+                          size.width(width * .02),
+                          Icon(Icons.location_on,
+                              color: Colors.green, size: width * .04),
+                        ],
+                      )
+                    ],
+                  ),
+                )
               ],
             ),
           ),

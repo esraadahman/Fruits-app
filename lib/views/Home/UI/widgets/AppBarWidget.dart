@@ -19,11 +19,14 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      forceMaterialTransparency: true,
+      elevation: 0,
       backgroundColor: AppColors.whiteColor,
       leading: leading,
       title: TitleText(
         text: title ?? "Fruit Market",
-        fontSize: width * 0.07,
+        fontSize: width * 0.06,
+        
         color: AppColors.title_text,
       ),
       centerTitle: centerTitle ?? false,

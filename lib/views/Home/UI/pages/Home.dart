@@ -1,10 +1,11 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
+import 'package:fruits_app/Core/constants/Lists.dart';
 import 'package:fruits_app/views/Home/UI/widgets/AppBarWidget.dart';
 import 'package:fruits_app/views/Home/UI/widgets/PonitsWidget.dart';
 import 'package:fruits_app/views/Home/UI/widgets/SellerCard.dart';
 import 'package:fruits_app/views/Home/UI/widgets/TextRowWidget.dart';
 import 'package:fruits_app/views/Home/UI/widgets/categoriesWidget.dart';
-import 'package:fruits_app/views/Products/UI/page/productScreen.dart';
+import 'package:fruits_app/views/Products/UI/page/productsScreen.dart';
 import 'package:fruits_app/views/Search/UI/page/searchScreen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -15,19 +16,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List images = [
-    "assets/images/home.png",
-    "assets/images/home.png",
-    "assets/images/home.png",
-    "assets/images/home.png",
-  ];
   int currentIndex = 0;
-  final List<Map<String, String>> categories = [
-    {"title": "Restaurant", "image": "assets/images/image 5.png"},
-    {"title": "Coffee", "image": "assets/images/image 6.png"},
-    {"title": "Pharmacy", "image": "assets/images/image 7.png"},
-    {"title": "Others", "image": "assets/images/image 8.png"},
-  ];
 
   String status = "open";
   @override
@@ -50,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 IconButton(
                   icon: Icon(Icons.tune, size: width * 0.07),
                   onPressed: () {
-                    context.navigateToEasy(Productscreen());
+                    context.navigateToEasy(ProductsScreen());
                   },
                 ),
               ],
@@ -98,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         alignment: WrapAlignment.center,
                         crossAxisAlignment: WrapCrossAlignment.center,
                         spacing: width * 0.04,
-                        children: categories.map((cat) {
+                        children: categoriesHome.map((cat) {
                           return categoriesWidget(
                             height: height,
                             imagepath: cat['image']!,
@@ -115,13 +104,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       onPressed: () {}),
                   size.height(height * 0.01),
                   SizedBox(
-                      height: height,
+                      height: height * 0.4,
                       child: ListView.separated(
                           itemBuilder: (context, index) {
                             return SellerCard(
                               height: height,
                               width: width,
-                              sellerName: "Seller name",
+                              sellerName: "Seller name $index",
                               deliveryCharges: "0.5 KD",
                               status: "Open",
                               orderName: "Beverages",
@@ -134,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             return size.height(height * .02);
                           },
                           itemCount: 10)),
-                  size.height(height * 2)
+                  //   size.height(height * .02)
                 ],
               ),
             ));

@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fruits_app/firebase_options.dart';
 import 'package:fruits_app/views/Home/UI/pages/Home.dart';
+import 'package:fruits_app/views/OrderTracking/UI/page/OrderTracking.dart';
 import 'package:fruits_app/views/navi/NavBar.dart';
 import 'package:fruits_app/views/onBoarding/UI/pages/SplashScreen.dart';
 
@@ -28,6 +29,8 @@ class MyApp extends StatelessWidget {
             // SplashScreen(),
             //HomeScreen()
             // NaviBarSection(),
-            NavBarSection());
+            NavBarSection()
+        // OrderTracking()
+        );
   }
 }

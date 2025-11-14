@@ -9,6 +9,7 @@ class Customauthbutton extends StatelessWidget {
       this.borderColor,
       required this.height,
       required this.width,
+      this.iconData,
       this.onTap});
 
   final Color? buttonColor;
@@ -18,7 +19,7 @@ class Customauthbutton extends StatelessWidget {
   final double height;
   final double width;
   final VoidCallback? onTap;
-
+  final IconData? iconData;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -34,12 +35,31 @@ class Customauthbutton extends StatelessWidget {
               borderRadius: BorderRadius.circular(25),
               border: Border.all(color: borderColor ?? Colors.transparent),
             ),
-            child: Text(
-              buttonText,
-              style: TextStyle(
-                  color: textColor,
-                  fontSize: width * 0.042,
-                  fontWeight: FontWeight.bold),
-            )));
+            child: iconData == null
+                ? Text(
+                    buttonText,
+                    style: TextStyle(
+                        color: textColor,
+                        fontSize: width * 0.042,
+                        fontWeight: FontWeight.bold),
+                  )
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        iconData,
+                        size: width * .05,
+                        color: textColor,
+                      ),
+                      size.width(width * .02),
+                      Text(
+                        buttonText,
+                        style: TextStyle(
+                            color: textColor,
+                            fontSize: width * 0.04,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  )));
   }
 }

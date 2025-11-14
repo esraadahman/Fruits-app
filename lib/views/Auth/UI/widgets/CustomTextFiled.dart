@@ -14,6 +14,8 @@ class Customtextfiled extends StatelessWidget {
     this.initialValue,
     required this.labelText_top,
     required this.width,
+    this.maxLines = 1,
+    this.maxLength,
   });
 
   final String hintText;
@@ -27,6 +29,8 @@ class Customtextfiled extends StatelessWidget {
   final String? initialValue;
   final String labelText_top;
   final double width;
+  final int maxLines;
+  final int? maxLength;
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +53,13 @@ class Customtextfiled extends StatelessWidget {
           child: TextFormField(
             obscureText: obscureText,
             keyboardType: keyboardType,
+            maxLines: maxLines,
+            maxLength: maxLength,
             decoration: InputDecoration(
               hintText: hintText,
               labelText: labelText,
               labelStyle: TextStyle(color: Colors.black),
+              alignLabelWithHint: true,
               prefixIcon: Icon(prefixIcon),
               suffixIcon: suffixIcon,
               // border styles

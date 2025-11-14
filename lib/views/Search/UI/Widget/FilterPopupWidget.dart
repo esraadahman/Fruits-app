@@ -24,6 +24,7 @@ class _FilterPopupWidgetState extends State<FilterPopupWidget> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      backgroundColor: AppColors.whiteColor,
       title: const Center(
         child: Text(
           'Filter by',
@@ -57,7 +58,9 @@ class _FilterPopupWidgetState extends State<FilterPopupWidget> {
             ),
             size.height(widget.height * .02),
             DropdownButtonFormField<String>(
+              borderRadius: BorderRadius.circular(20),
               value: selectedValue,
+              dropdownColor: AppColors.whiteColor,
               hint: const Text("All Areas"),
               decoration: InputDecoration(
                 border: OutlineInputBorder(
@@ -92,7 +95,7 @@ class _FilterPopupWidgetState extends State<FilterPopupWidget> {
               ],
             ),
 
-            // ☑️ Checkbox 2
+            
             Row(
               children: [
                 Transform.scale(
@@ -139,7 +142,10 @@ class _FilterPopupWidgetState extends State<FilterPopupWidget> {
             onPressed: () => Navigator.pop(context),
             child: Text(
               "Close",
-              style: TextStyle(fontSize: widget.width * .035),
+              style: TextStyle(
+                  fontSize: widget.width * .04,
+                  color: AppColors.blackColor,
+                  fontWeight: FontWeight.normal),
             ),
           ),
         )

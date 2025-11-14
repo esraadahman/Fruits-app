@@ -24,7 +24,7 @@ class categoriesWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
         image: DecorationImage(
           image: AssetImage(imagepath),
-          fit: BoxFit.cover,
+          fit: BoxFit.contain,
         ),
         boxShadow: [
           BoxShadow(

@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
 import 'package:fruits_app/Core/constants/colors.dart';
+import 'package:fruits_app/views/Basket/UI/page/BasketScreen.dart';
+import 'package:fruits_app/views/Favorite/UI/page/Favorite.dart';
 import 'package:fruits_app/views/Home/UI/pages/Home.dart';
+import 'package:fruits_app/views/More/UI/page/moreScreen.dart';
+import 'package:fruits_app/views/MyOrders/UI/page/myOrders.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class NavBarSection extends StatefulWidget {
@@ -14,16 +18,33 @@ class NavBarSection extends StatefulWidget {
 class _NavBarSectionState extends State<NavBarSection> {
   int currentIndex = 0;
 
-  final List<Widget> pages = [
-    HomeScreen(),
-    const Center(child: Text("📋 Tasks")),
-    const Center(child: Text("🛒 Cart")),
-    const Center(child: Text("❤️ Favorites")),
-    const Center(child: Text("📱 More")),
-  ];
+  final List<Widget> pages =[];
+  //  [
+  //   HomeScreen(),
+  //   MyOrders(),
+  //   Basketscreen(),
+  //   Favorite(),
+  //   MoreScreen()
+  // ];
 
   double width = 0;
   double height = 0;
+  void initState() {
+  super.initState();
+  pages.addAll([
+    HomeScreen(),
+    MyOrders(),
+    Basketscreen(),
+    Favorite(),
+    MoreScreen(
+      onNavItemSelected: (index) {
+        setState(() {
+          currentIndex = index;
+        });
+      },
+    ),
+  ]);
+}
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +66,7 @@ class _NavBarSectionState extends State<NavBarSection> {
               selectedItemColor: AppColors.button_Color,
               items: [
                 _buildNavItem(Icons.home, "Home"),
-                _buildNavItem(Icons.format_list_numbered, "List"),
+                _buildNavItem(Icons.format_list_numbered, "Orders"),
                 _buildNavItem(Icons.shopping_basket_outlined, "Basket"),
                 _buildNavItem(Icons.favorite_border, "Favorite"),
                 _buildNavItem(CupertinoIcons.list_dash, "More"),
