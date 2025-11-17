@@ -6,19 +6,20 @@ class CheckoutStep2 extends StatelessWidget {
       required this.nextPage,
       required this.previousPage,
       required this.width,
-      required this.height});
+      required this.height,
+      this.orientation = Orientation.portrait});
   final VoidCallback nextPage;
   final VoidCallback previousPage;
   final double width;
   final double height;
-
+  final Orientation orientation;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Expanded(
-          child: Column(
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CheckoutProgress(
@@ -37,19 +38,24 @@ class CheckoutStep2 extends StatelessWidget {
                 ),
               ),
               size.height(height * .02),
-              AddAddressWidget(height: height, width: width),
-              size.height(height * .02),
-              AddressDetails(
-                height: height,
-                width: width,
+              Center(
+                child: AddAddressWidget(height: height, width: width),
               ),
+              size.height(height * .02),
+              Center(
+                child: AddressDetails(
+                  height: orientation == Orientation.portrait
+                      ? height
+                      : height * 1.2,
+                  width:
+                      orientation == Orientation.portrait ? width : width * 1.1,
+                ),
+              )
             ],
           ),
-        ),
-        Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: width * .05, vertical: height * .03),
-            child: Flexible(
+          Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: width * .05, vertical: height * .03),
               child: Customauthbutton(
                 textColor: AppColors.whiteColor,
                 buttonText: "Continue",
@@ -57,9 +63,9 @@ class CheckoutStep2 extends StatelessWidget {
                 height: height,
                 width: width,
                 onTap: nextPage,
-              ),
-            )),
-      ],
+              )),
+        ],
+      ),
     );
   }
 }

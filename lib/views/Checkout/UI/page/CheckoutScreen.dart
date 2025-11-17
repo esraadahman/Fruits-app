@@ -38,8 +38,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       double height = deviceInfo.localHeight;
 
       return Scaffold(
-        backgroundColor: AppColors.whiteColor,
         appBar: AppBarWidget(
+          orientation: deviceInfo.orientation,
           width: width,
           title: "Checkout",
           centerTitle: true,
@@ -55,15 +55,37 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           physics: const NeverScrollableScrollPhysics(), // disable swipe
           onPageChanged: (index) => setState(() => currentPage = index),
           children: [
-            CheckoutStep1(nextPage: nextPage, width: width, height: height),
+            SingleChildScrollView(
+              child: CheckoutStep1(
+                  nextPage: nextPage,
+                  width: deviceInfo.orientation == Orientation.portrait
+                      ? width
+                      : width * .5,
+                  height: deviceInfo.orientation == Orientation.portrait
+                      ? height
+                      : height * 1.7),
+            ),
             CheckoutStep2(
               nextPage: nextPage,
               previousPage: previousPage,
-              width: width,
-              height: height,
+              width: deviceInfo.orientation == Orientation.portrait
+                  ? width
+                  : width * .5,
+              height: deviceInfo.orientation == Orientation.portrait
+                  ? height
+                  : height * 1.7,
+              orientation: deviceInfo.orientation,
             ),
-            CheckoutStep3(
-                previousPage: previousPage, width: width, height: height),
+            SingleChildScrollView(
+              child: CheckoutStep3(
+                  previousPage: previousPage,
+                  width: deviceInfo.orientation == Orientation.portrait
+                      ? width
+                      : width * .5,
+                  height: deviceInfo.orientation == Orientation.portrait
+                      ? height
+                      : height * 1.7),
+            )
           ],
         ),
       );

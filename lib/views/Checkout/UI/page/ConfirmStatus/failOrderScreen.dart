@@ -11,6 +11,7 @@ class FailOrderScreen extends StatelessWidget {
       return Scaffold(
         backgroundColor: AppColors.whiteColor,
         appBar: AppBarWidget(
+          orientation: deviceInfo.orientation,
           width: width,
           title: "Checkout",
           centerTitle: true,
@@ -33,13 +34,17 @@ class FailOrderScreen extends StatelessWidget {
             ),
             size.height(height * .02),
             MainTitle(
-              width: width,
+              width: deviceInfo.orientation == Orientation.portrait
+                  ? width
+                  : width * .6,
               maintitle: "OPS",
               color: AppColors.redColor,
             ),
             size.height(height * .02),
             SubTitle(
-              width: width,
+              width: deviceInfo.orientation == Orientation.portrait
+                  ? width
+                  : width * .4,
               subtitle: "Error while confirming your payment/order",
             ),
             size.height(height * .2),
@@ -50,7 +55,9 @@ class FailOrderScreen extends StatelessWidget {
                 buttonText: "Back",
                 buttonColor: AppColors.redColor,
                 height: height,
-                width: width,
+                width: deviceInfo.orientation == Orientation.portrait
+                    ? width
+                    : width * .6,
                 onTap: () {},
               ),
             ),

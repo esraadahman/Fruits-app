@@ -76,7 +76,7 @@ class Basketscreen extends StatelessWidget {
               TotalWidget(
                 width: deviceInfo.orientation == Orientation.portrait
                     ? width
-                    : width * .7,
+                    : width * .6,
                 nameFiled: "Subtotal",
                 price: 200,
                 pricedistanse: " km",
@@ -85,7 +85,7 @@ class Basketscreen extends StatelessWidget {
               TotalWidget(
                 width: deviceInfo.orientation == Orientation.portrait
                     ? width
-                    : width * .7,
+                    : width * .6,
                 nameFiled: "Shipping Charges",
                 price: 200,
                 pricedistanse: " km",
@@ -94,7 +94,7 @@ class Basketscreen extends StatelessWidget {
               TotalWidget(
                 width: deviceInfo.orientation == Orientation.portrait
                     ? width
-                    : width * .7,
+                    : width * .6,
                 nameFiled: "Bag Total",
                 price: 200,
                 pricedistanse: " km",
@@ -104,8 +104,10 @@ class Basketscreen extends StatelessWidget {
               CheckoutRow(
                 width: deviceInfo.orientation == Orientation.portrait
                     ? width
-                    : width * .7,
+                    : width * .6,
+
                 height: height,
+                
                 numbers: BasketDetails.length,
                 onclickButton: () {
                   context.navigateTo(CheckoutScreen());

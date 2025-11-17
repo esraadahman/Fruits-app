@@ -14,31 +14,23 @@ class AddressDetails extends StatelessWidget {
         padding: EdgeInsets.symmetric(
             horizontal: width * .03, vertical: height * .01),
         decoration: decorationContainer(),
-        child: Flexible(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Expanded(
-                child: AddressRow(
-              width: width,
-              height: height,
-            )),
-            //   size.height(height * .02),
-            Flexible(
-              child: Name_PhoneWidget(
-                width: width,
-                title: "john Doe",
-              ),
-            ),
-            Name_PhoneWidget(
-              width: width,
-              title: "+000-11-1234567",
-            ),
-            size.height(height * .02),
-            Flexible(
-              child: desAddress(width: width),
-            )
-          ]),
-        ));
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          AddressRow(
+            width: width,
+            height: height,
+          ),
+          //   size.height(height * .02),
+          Name_PhoneWidget(
+            width: width,
+            title: "john Doe",
+          ),
+          Name_PhoneWidget(
+            width: width,
+            title: "+000-11-1234567",
+          ),
+          size.height(height * .02),
+          Flexible(child: desAddress(width: width)),
+        ]));
   }
 }
 

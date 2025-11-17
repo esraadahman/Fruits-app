@@ -13,6 +13,7 @@ class OrderTracking extends StatelessWidget {
         backgroundColor: AppColors.whiteColor,
         appBar: AppBarWidget(
           width: width,
+          orientation: deviceInfo.orientation,
           title: "Order Tracking",
           centerTitle: true,
           leading: IconButton(
@@ -26,13 +27,17 @@ class OrderTracking extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SubTitle(
-                    width: width,
+                    width: deviceInfo.orientation == Orientation.portrait
+                        ? width
+                        : width * .6,
                     subtitle: "Your order code: ",
                   ),
                   Text(
                     "#243188",
                     style: TextStyle(
-                        fontSize: width * .04,
+                        fontSize: deviceInfo.orientation == Orientation.portrait
+                            ? width * .04
+                            : width * .02,
                         fontWeight: FontWeight.bold,
                         color: AppColors.blackColor),
                   )
@@ -40,18 +45,24 @@ class OrderTracking extends StatelessWidget {
               ),
               size.height(height * .01),
               SubTitle(
-                width: width,
+                width: deviceInfo.orientation == Orientation.portrait
+                    ? width
+                    : width * .6,
                 subtitle: "3 items - 37.50 KD",
               ),
               size.height(height * .01),
               SubTitle(
-                width: width,
+                width: deviceInfo.orientation == Orientation.portrait
+                    ? width
+                    : width * .6,
                 subtitle: "Payment Method : Cash",
               ),
               SizedBox(
                 height: height * .6,
                 child: TimelineTilewidget(
-                  width: width,
+                  width: deviceInfo.orientation == Orientation.portrait
+                      ? width
+                      : width * .6,
                   height: height,
                 ),
               ),
@@ -65,7 +76,9 @@ class OrderTracking extends StatelessWidget {
                     buttonText: "Confirm",
                     buttonColor: AppColors.button_Color,
                     height: height,
-                    width: width,
+                    width: deviceInfo.orientation == Orientation.portrait
+                        ? width
+                        : width * .6,
                     onTap: () {},
                   )),
               size.height(height * .02),
@@ -79,9 +92,18 @@ class OrderTracking extends StatelessWidget {
                   buttonText: "Cancel Order",
                   buttonColor: AppColors.redColor,
                   height: height,
-                  width: width,
+                  width: deviceInfo.orientation == Orientation.portrait
+                      ? width
+                      : width * .6,
                   onTap: () {
-                    showCancelOrderDialog(context, width, height);
+                    showCancelOrderDialog(
+                        context,
+                        deviceInfo.orientation == Orientation.portrait
+                            ? width
+                            : width * .6,
+                        deviceInfo.orientation == Orientation.portrait
+                            ? height
+                            : height * 2.5);
                   },
                 ),
               ),

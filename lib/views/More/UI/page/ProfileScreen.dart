@@ -21,76 +21,87 @@ class ProfileScreen extends StatelessWidget {
               },
               icon: const Icon(Icons.arrow_back_ios_new)),
         ),
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: width * 0.04),
-          child: Column(
-            children: [
-              Column(
-                children: [
-                  AddImageWidget(
-                    width: width,
-                    image: image,
-                    onTap: () {},
-                  ),
-                  TextLineWidget(
-                    width: width,
-                    text: "Welcome, Esraa",
-                  ),
-                ],
-              ),
-              size.height(height * 0.03),
-              Customtextfiled(
-                hintText: "FullName",
-                labelText: "First and Last Name",
-                prefixIcon: null,
-                keyboardType: TextInputType.name,
-                labelText_top: "Full Name",
-                width: width,
-                onChanged: (value) {},
-                validator: (value) {
-                  return value!.isEmpty
-                      ? "Please enter your name"
-                      : value.trim().length < 5
-                          ? "Name must be at least 5 characters"
-                          : !RegExp(r"^[a-zA-Z\s]+$").hasMatch(value.trim())
-                              ? "Name can only contain letters and spaces"
-                              : null;
-                },
-              ),
-              size.height(height * 0.02),
-              Phonewidget(
-                labelText_top: "Phone Number",
-                width: width,
-                onChanged: (value) {},
-              ),
-              Customtextfiled(
-                hintText: "Password",
-                labelText: "Password",
-                prefixIcon: null,
-                obscureText: true,
-                labelText_top: "Password",
-                width: width,
-                onChanged: (value) {},
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "Please enter your password";
-                  } else if (value.length < 6) {
-                    return "Password must be at least 6 characters";
-                  } else {
-                    return null;
-                  }
-                },
-              ),
-              size.height(height * 0.07),
-              Customauthbutton(
-                textColor: AppColors.whiteColor,
-                buttonText: "Update",
-                buttonColor: AppColors.button_Color,
-                height: height,
-                width: width,
-                onTap: () {},
-              ),
-            ],
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: width * 0.04),
+            child: Column(
+              children: [
+                Column(
+                  children: [
+                    AddImageWidget(
+                      width: deviceInfo.orientation == Orientation.portrait
+                          ? width
+                          : width * 0.4,
+                      image: image,
+                      onTap: () {},
+                    ),
+                    TextLineWidget(
+                      width: deviceInfo.orientation == Orientation.portrait
+                          ? width
+                          : width * 0.4,
+                      text: "Welcome, Esraa",
+                    ),
+                  ],
+                ),
+                size.height(height * 0.03),
+                Customtextfiled(
+                  hintText: "FullName",
+                  orientation: deviceInfo.orientation,
+                  labelText: "First and Last Name",
+                  prefixIcon: null,
+                  keyboardType: TextInputType.name,
+                  labelText_top: "Full Name",
+                  width: width,
+                  onChanged: (value) {},
+                  validator: (value) {
+                    return value!.isEmpty
+                        ? "Please enter your name"
+                        : value.trim().length < 5
+                            ? "Name must be at least 5 characters"
+                            : !RegExp(r"^[a-zA-Z\s]+$").hasMatch(value.trim())
+                                ? "Name can only contain letters and spaces"
+                                : null;
+                  },
+                ),
+                size.height(height * 0.02),
+                Phonewidget(
+                  labelText_top: "Phone Number",
+                  width: width,
+                  orientation: deviceInfo.orientation,
+                  onChanged: (value) {},
+                ),
+                Customtextfiled(
+                  hintText: "Password",
+                  orientation: deviceInfo.orientation,
+                  labelText: "Password",
+                  prefixIcon: null,
+                  obscureText: true,
+                  labelText_top: "Password",
+                  width: width,
+                  onChanged: (value) {},
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please enter your password";
+                    } else if (value.length < 6) {
+                      return "Password must be at least 6 characters";
+                    } else {
+                      return null;
+                    }
+                  },
+                ),
+                size.height(height * 0.07),
+                Customauthbutton(
+                  textColor: AppColors.whiteColor,
+                  buttonText: "Update",
+                  buttonColor: AppColors.button_Color,
+                  height: height,
+                  width: deviceInfo.orientation == Orientation.portrait
+                      ? width
+                      : width * 0.6,
+                  onTap: () {},
+                ),
+              ],
+            ),
           ),
         ),
       );

@@ -10,9 +10,10 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(DevicePreview(
-    builder: (context) => const MyApp(),
-  ));
+  // runApp(DevicePreview(
+  //   builder: (context) => const MyApp(),
+  // ));
+  return runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

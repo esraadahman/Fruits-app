@@ -1,6 +1,5 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
 
-
 void showCancelOrderDialog(BuildContext context, double width, double height) {
   String? selectedReason;
   final TextEditingController notesController = TextEditingController();
@@ -114,17 +113,18 @@ void showCancelOrderDialog(BuildContext context, double width, double height) {
 
                 SizedBox(height: height * 0.03),
 
-                SizedBox(
-                    height: height * .055,
-                    child: Customauthbutton(
-                      textColor: AppColors.whiteColor,
-                      buttonText: "Confirm Cancelation",
-                      buttonColor: AppColors.button_Color,
-                      height: height,
-                      width: width,
-                      onTap: () {},
-                    )),
-
+                Center(
+                  child: SizedBox(
+                      height: height * .055,
+                      child: Customauthbutton(
+                        textColor: AppColors.whiteColor,
+                        buttonText: "Confirm Cancelation",
+                        buttonColor: AppColors.button_Color,
+                        height: height,
+                        width: width,
+                        onTap: () {},
+                      )),
+                ),
                 SizedBox(height: height * 0.015),
 
                 Center(

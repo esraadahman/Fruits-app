@@ -23,13 +23,10 @@ class ProductsScreen extends StatelessWidget {
                   Icons.arrow_back_ios_new,
                 )),
             actions: [
-              IconButton(
-                icon: Icon(Icons.search,
+            Icon(Icons.search,
                     size: deviceInfo.orientation == Orientation.portrait
                         ? width * 0.07
-                        : width * 0.04),
-                onPressed: () {},
-              ),
+                        : width * 0.04)
             ],
           ),
           body: SingleChildScrollView(

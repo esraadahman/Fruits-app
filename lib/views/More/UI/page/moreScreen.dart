@@ -110,7 +110,9 @@ class MoreScreen extends StatelessWidget {
                     context: context,
                     builder: (context) => LanguageDialog(
                       height: height,
-                      width: width,
+                      width: deviceInfo.orientation == Orientation.portrait
+                          ? width
+                          : width * 0.6,
                       initialLanguage: "en",
                       onLanguageSelected: (lang) {
                         print("Selected Language: $lang");

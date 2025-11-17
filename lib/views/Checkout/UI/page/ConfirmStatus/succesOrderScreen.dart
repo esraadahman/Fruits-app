@@ -9,8 +9,8 @@ class SuccesOrderScreen extends StatelessWidget {
       double width = deviceInfo.localWidth;
       double height = deviceInfo.localHeight;
       return Scaffold(
-        backgroundColor: AppColors.whiteColor,
         appBar: AppBarWidget(
+          orientation: deviceInfo.orientation,
           width: width,
           title: "Checkout",
           centerTitle: true,
@@ -33,17 +33,23 @@ class SuccesOrderScreen extends StatelessWidget {
             ),
             size.height(height * .02),
             MainTitle(
-              width: width,
+              width: deviceInfo.orientation == Orientation.portrait
+                  ? width
+                  : width * .6,
               maintitle: "YOUR ORDER IS CONFIRMED!",
             ),
             size.height(height * .02),
             SubTitle(
-              width: width,
+              width: deviceInfo.orientation == Orientation.portrait
+                  ? width
+                  : width * .4,
               subtitle: "Your order code: #243188",
             ),
             size.height(height * .001),
             SubTitle(
-              width: width,
+              width: deviceInfo.orientation == Orientation.portrait
+                  ? width
+                  : width * .4,
               subtitle: "Thank you for choosing our products!",
             ),
             size.height(height * .07),
@@ -54,7 +60,9 @@ class SuccesOrderScreen extends StatelessWidget {
                 buttonText: "Continue Shopping",
                 buttonColor: AppColors.button_Color,
                 height: height,
-                width: width,
+                width: deviceInfo.orientation == Orientation.portrait
+                    ? width
+                    : width * .6,
                 onTap: () {},
               ),
             ),
@@ -67,7 +75,9 @@ class SuccesOrderScreen extends StatelessWidget {
                 buttonColor: AppColors.whiteColor,
                 borderColor: AppColors.button_Color,
                 height: height,
-                width: width,
+                width: deviceInfo.orientation == Orientation.portrait
+                    ? width
+                    : width * .5,
                 onTap: () {
                   context.navigateTo(OrderTracking());
                 },

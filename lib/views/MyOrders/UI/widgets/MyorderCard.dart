@@ -44,70 +44,68 @@ class MyorderCard extends StatelessWidget {
                     padding: EdgeInsets.only(
                       top: height * .02,
                     ),
-                    child: Flexible(
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          //      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "#243188 - 37 KD",
-                              style: TextStyle(
-                                fontSize: width * 0.04,
-                                fontWeight: FontWeight.bold,
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        //      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "#243188 - 37 KD",
+                            style: TextStyle(
+                              fontSize: width * 0.04,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          size.height(height * .01),
+                          Row(
+                            children: [
+                              Text(
+                                "9 Sep",
+                                style: TextStyle(
+                                  color: AppColors.grayColor,
+                                  fontSize: width * 0.035,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
                               ),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            size.height(height * .01),
-                            Row(
-                              children: [
-                                Text(
-                                  "9 Sep",
-                                  style: TextStyle(
-                                    color: AppColors.grayColor,
-                                    fontSize: width * 0.035,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
+                              size.width(width * .02),
+                              Pointwidget(fontsize: width * 0.05),
+                              size.width(width * .01),
+                              Text(
+                                "4 items",
+                                style: TextStyle(
+                                  color: AppColors.grayColor,
+                                  fontSize: width * 0.035,
+                                  fontWeight: FontWeight.normal,
                                 ),
-                                size.width(width * .02),
-                                Pointwidget(fontsize: width * 0.05),
-                                size.width(width * .01),
-                                Text(
-                                  "4 items",
-                                  style: TextStyle(
-                                    color: AppColors.grayColor,
-                                    fontSize: width * 0.035,
-                                    fontWeight: FontWeight.normal,
-                                  ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                "Status :",
+                                style: TextStyle(
+                                  color: AppColors.grayColor,
+                                  fontSize: width * 0.035,
+                                  fontWeight: FontWeight.normal,
                                 ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  "Status :",
-                                  style: TextStyle(
-                                    color: AppColors.grayColor,
-                                    fontSize: width * 0.035,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              size.width(width * .02),
+                              Text(
+                                "Delivering",
+                                style: TextStyle(
+                                  color: colorsCreated,
+                                  fontSize: width * 0.04,
+                                  fontWeight: FontWeight.normal,
                                 ),
-                                size.width(width * .02),
-                                Text(
-                                  "Delivering",
-                                  style: TextStyle(
-                                    color: colorsCreated,
-                                    fontSize: width * 0.04,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ]),
-                    ),
+                              ),
+                            ],
+                          ),
+                        ]),
                   ),
                 ],
               ),

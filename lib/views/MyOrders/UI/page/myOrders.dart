@@ -27,7 +27,7 @@ class MyOrders extends StatelessWidget {
                       Color colorsCreated = AppColors.randomColor();
                       return MyorderCard(
                           height: deviceInfo.orientation == Orientation.portrait
-                              ? height * 1
+                              ? height
                               : height * 1.9,
                           width: deviceInfo.orientation == Orientation.portrait
                               ? width
