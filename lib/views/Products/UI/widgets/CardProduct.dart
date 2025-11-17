@@ -1,6 +1,4 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/views/Basket/UI/Widget/SaleWidget.dart';
-import 'package:fruits_app/views/Home/UI/widgets/subWidgets/imageCircleAvater.dart';
 
 class CardProduct extends StatelessWidget {
   const CardProduct(
@@ -68,7 +66,7 @@ class CardProduct extends StatelessWidget {
                           : "Delivery : $deliveryCharges",
                       style: TextStyle(
                         color: isPriceUponSelection
-                            ? Colors.red
+                            ? AppColors.redColor
                             : Colors.grey.shade700,
                         fontSize: width * 0.03,
                         fontWeight: isPriceUponSelection
@@ -83,7 +81,7 @@ class CardProduct extends StatelessWidget {
                       Text(
                         "to $deliveryCharges_old min",
                         style: TextStyle(
-                          color: Colors.grey,
+                          color: AppColors.lightGray,
                           fontSize: width * 0.03,
                           decoration: TextDecoration.lineThrough,
                         ),

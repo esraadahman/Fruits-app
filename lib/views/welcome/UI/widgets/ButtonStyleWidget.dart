@@ -23,6 +23,8 @@ class ButtonStyleWidget extends StatelessWidget {
   final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
+    final shortestSide = MediaQuery.of(context).size.shortestSide;
+
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -40,13 +42,16 @@ class ButtonStyleWidget extends StatelessWidget {
               Image.asset(
                 IconPath,
                 fit: BoxFit.contain,
-                height: height * 0.03,
-                width: width * 0.07,
+                // height: height * 0.03,
+                // width: width * 0.07,
+                height: shortestSide * 0.06,
+                width: shortestSide * 0.06,
               ),
               size.width(width * 0.03),
               Text(
                 buttonText,
-                style: TextStyle(color: textColor, fontSize: width * 0.03),
+                style:
+                    TextStyle(color: textColor, fontSize: shortestSide * 0.035),
               )
             ],
           )),

@@ -1,12 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/Core/constants/colors.dart';
-import 'package:fruits_app/views/Basket/UI/page/BasketScreen.dart';
-import 'package:fruits_app/views/Favorite/UI/page/Favorite.dart';
-import 'package:fruits_app/views/Home/UI/pages/Home.dart';
-import 'package:fruits_app/views/More/UI/page/moreScreen.dart';
-import 'package:fruits_app/views/MyOrders/UI/page/myOrders.dart';
-import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 
 class NavBarSection extends StatefulWidget {
   const NavBarSection({super.key});
@@ -18,72 +12,94 @@ class NavBarSection extends StatefulWidget {
 class _NavBarSectionState extends State<NavBarSection> {
   int currentIndex = 0;
 
-  final List<Widget> pages =[];
-  //  [
-  //   HomeScreen(),
-  //   MyOrders(),
-  //   Basketscreen(),
-  //   Favorite(),
-  //   MoreScreen()
-  // ];
+  late final List<Widget> pages;
 
-  double width = 0;
-  double height = 0;
+  @override
   void initState() {
-  super.initState();
-  pages.addAll([
-    HomeScreen(),
-    MyOrders(),
-    Basketscreen(),
-    Favorite(),
-    MoreScreen(
-      onNavItemSelected: (index) {
-        setState(() {
-          currentIndex = index;
-        });
-      },
-    ),
-  ]);
-}
+    super.initState();
+    pages = [
+      HomeScreen(),
+      MyOrders(),
+      Basketscreen(),
+      Favorite(),
+      MoreScreen(
+        onNavItemSelected: (index) {
+          setState(() {
+            currentIndex = index;
+          });
+        },
+      ),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    Orientation orientation = MediaQuery.of(context).orientation;
+
     return Scaffold(
-        body: Infowidget(builder: (context, deviceInfo) {
-          width = deviceInfo.localWidth;
-          height = deviceInfo.localHeight;
-          return pages[currentIndex];
-        }),
-        bottomNavigationBar: ClipRRect(
+      body: pages[currentIndex],
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: AppColors.button_Color,
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(24),
             topRight: Radius.circular(24),
           ),
-          child: SalomonBottomBar(
-              currentIndex: currentIndex,
-              onTap: (index) => setState(() => currentIndex = index),
-              backgroundColor: AppColors.button_Color,
-              selectedItemColor: AppColors.button_Color,
-              items: [
-                _buildNavItem(Icons.home, "Home"),
-                _buildNavItem(Icons.format_list_numbered, "Orders"),
-                _buildNavItem(Icons.shopping_basket_outlined, "Basket"),
-                _buildNavItem(Icons.favorite_border, "Favorite"),
-                _buildNavItem(CupertinoIcons.list_dash, "More"),
-              ]),
-        ));
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 10,
+            )
+          ],
+        ),
+        padding: EdgeInsets.symmetric(
+            horizontal: width * 0.02, vertical: height * 0.01),
+        child: GNav(
+          gap: width * 0.02,
+          activeColor: AppColors.button_Color,
+          color: Colors.white,
+          iconSize: height * 0.03,
+          padding: EdgeInsets.symmetric(
+              horizontal: width * 0.02, vertical: height * 0.01),
+          duration: const Duration(milliseconds: 400),
+          backgroundColor: AppColors.button_Color,
+          tabBackgroundColor: AppColors.whiteColor,
+          selectedIndex: currentIndex,
+          onTabChange: (index) {
+            setState(() {
+              currentIndex = index;
+            });
+          },
+          tabs: [
+            _buildNavItem(Icons.home, "Home", width, height, orientation),
+            _buildNavItem(Icons.format_list_numbered, "Orders", width, height,
+                orientation),
+            _buildNavItem(Icons.shopping_basket_outlined, "Basket", width,
+                height, orientation),
+            _buildNavItem(
+                Icons.favorite_border, "Favorite", width, height, orientation),
+            _buildNavItem(Icons.menu, "More", width, height, orientation),
+          ],
+        ),
+      ),
+    );
   }
 
-  SalomonBottomBarItem _buildNavItem(IconData icon, String label) {
-    return SalomonBottomBarItem(
-      activeIcon: Icon(icon, size: height * 0.035),
-      icon: Icon(icon, size: height * 0.03),
-      title: Text(
-        label,
-        style: TextStyle(fontSize: width * 0.035),
-      ),
-      selectedColor: AppColors.whiteColor,
-      unselectedColor: Colors.white,
+  GButton _buildNavItem(IconData icon, String label, double width,
+      double height, Orientation orientation) {
+    return GButton(
+      icon: icon,
+      text: label,
+      iconSize:
+          orientation == Orientation.portrait ? height * 0.03 : width * 0.04,
+      textStyle: TextStyle(
+          fontSize: orientation == Orientation.portrait
+              ? width * 0.035
+              : width * 0.02,
+          color: AppColors.button_Color,
+          fontWeight: FontWeight.bold),
     );
   }
 }

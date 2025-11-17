@@ -10,6 +10,7 @@ class Customauthbutton extends StatelessWidget {
       required this.height,
       required this.width,
       this.iconData,
+      this.orientation = Orientation.portrait,
       this.onTap});
 
   final Color? buttonColor;
@@ -20,6 +21,7 @@ class Customauthbutton extends StatelessWidget {
   final double width;
   final VoidCallback? onTap;
   final IconData? iconData;
+  final Orientation orientation;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -40,7 +42,9 @@ class Customauthbutton extends StatelessWidget {
                     buttonText,
                     style: TextStyle(
                         color: textColor,
-                        fontSize: width * 0.042,
+                        fontSize: orientation == Orientation.portrait
+                            ? width * 0.042
+                            : width * 0.025,
                         fontWeight: FontWeight.bold),
                   )
                 : Row(

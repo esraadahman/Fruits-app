@@ -1,8 +1,4 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/views/Auth/UI/widgets/CustomAuthButton.dart';
-import 'package:fruits_app/views/Auth/UI/widgets/PhoneWidget.dart';
-import 'package:fruits_app/views/Home/UI/widgets/AppBarWidget.dart';
-import 'package:fruits_app/views/More/UI/page/moreScreen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

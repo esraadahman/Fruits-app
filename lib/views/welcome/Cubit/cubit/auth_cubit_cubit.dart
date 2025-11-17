@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:fruits_app/data/repo/AuthRepo.dart';
+import 'package:fruits_app/data/repositories/AuthRepo.dart';
 import 'package:meta/meta.dart';
 
 part 'auth_cubit_state.dart';

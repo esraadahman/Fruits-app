@@ -1,7 +1,5 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/Core/constants/decoration.dart';
-import 'package:fruits_app/views/Checkout/UI/Widgets/DeliveryTime/DatePickerField.dart';
-import 'package:fruits_app/views/Checkout/UI/Widgets/DeliveryTime/NowRow.dart';
+
 
 class SelectDate extends StatelessWidget {
   const SelectDate({

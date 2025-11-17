@@ -1,5 +1,5 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/views/Auth/UI/widgets/CustomAuthButton.dart';
+
 
 class CheckoutRow extends StatelessWidget {
   const CheckoutRow({

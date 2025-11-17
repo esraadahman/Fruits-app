@@ -1,7 +1,4 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/views/Basket/UI/Widget/basketCardWidget.dart';
-import 'package:fruits_app/views/Home/UI/widgets/AppBarWidget.dart';
-import 'package:fruits_app/views/Home/UI/widgets/subWidgets/imageCircleAvater.dart';
 
 class Favorite extends StatelessWidget {
   const Favorite({super.key});
@@ -28,7 +25,14 @@ class Favorite extends StatelessWidget {
             Expanded(
                 child: ListView.separated(
                     itemBuilder: (context, index) {
-                      return FavoriteCard(height: height, width: width);
+                      return FavoriteCard(
+                        height: deviceInfo.orientation == Orientation.portrait
+                            ? height * 1.1
+                            : height * 1.8,
+                        width: deviceInfo.orientation == Orientation.portrait
+                            ? width
+                            : width * .5,
+                      );
                     },
                     separatorBuilder: (context, index) =>
                         size.height(height * .02),

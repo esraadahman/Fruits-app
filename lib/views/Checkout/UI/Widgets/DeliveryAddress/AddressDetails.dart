@@ -1,6 +1,4 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/Core/constants/decoration.dart';
-import 'package:fruits_app/views/ProductDetails/UI/page/ProductDetails.dart';
 
 class AddressDetails extends StatelessWidget {
   const AddressDetails({super.key, required this.width, required this.height});

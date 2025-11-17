@@ -1,9 +1,4 @@
-import 'package:flutter/material.dart';
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/Core/constants/colors.dart';
-import 'package:fruits_app/views/Home/UI/widgets/PonitsWidget.dart';
-import 'package:fruits_app/views/Home/UI/widgets/subWidgets/imageCircleAvater.dart';
-import 'package:fruits_app/views/Home/UI/widgets/subWidgets/pointWidget.dart';
 
 class SellerCard extends StatelessWidget {
   final String sellerName;

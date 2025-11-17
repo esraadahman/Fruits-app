@@ -16,6 +16,7 @@ class Customtextfiled extends StatelessWidget {
     required this.width,
     this.maxLines = 1,
     this.maxLength,
+    this.orientation = Orientation.portrait,
   });
 
   final String hintText;
@@ -31,6 +32,7 @@ class Customtextfiled extends StatelessWidget {
   final double width;
   final int maxLines;
   final int? maxLength;
+  final Orientation orientation;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,9 @@ class Customtextfiled extends StatelessWidget {
           child: Text(
             "  $labelText_top",
             style: TextStyle(
-              fontSize: width * 0.04,
+              fontSize: orientation == Orientation.portrait
+                  ? width * 0.04
+                  : width * 0.025,
               fontWeight: FontWeight.w500,
               color: Colors.grey.shade600,
             ),

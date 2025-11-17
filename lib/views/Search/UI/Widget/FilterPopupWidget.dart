@@ -1,16 +1,18 @@
-import 'package:flutter/material.dart';
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
 import 'dart:math' as math;
-
-import 'package:fruits_app/views/Auth/UI/widgets/CustomAuthButton.dart';
 
 class FilterPopupWidget extends StatefulWidget {
   final void Function(String? category, bool openNow, bool freeDelivery)?
       onApply;
   final double width;
   final double height;
-  const FilterPopupWidget(
-      {super.key, this.onApply, required this.width, required this.height});
+  Orientation orientation;
+  FilterPopupWidget(
+      {super.key,
+      this.onApply,
+      required this.width,
+      required this.height,
+      this.orientation = Orientation.portrait});
 
   @override
   State<FilterPopupWidget> createState() => _FilterPopupWidgetState();
@@ -34,8 +36,9 @@ class _FilterPopupWidgetState extends State<FilterPopupWidget> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
-      content: SizedBox(
-        width: double.maxFinite,
+      content: SingleChildScrollView(
+        // width: double.maxFinite,
+        // height: widget.height,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -75,7 +78,6 @@ class _FilterPopupWidgetState extends State<FilterPopupWidget> {
               onChanged: (value) => setState(() => selectedValue = value),
             ),
             size.height(widget.height * .01),
-
             Row(
               children: [
                 Transform.scale(
@@ -84,8 +86,8 @@ class _FilterPopupWidgetState extends State<FilterPopupWidget> {
                     shape: CircleBorder(),
                     value: openNow,
                     onChanged: (value) => setState(() => openNow = value!),
-                    checkColor: Colors.green,
-                    activeColor: Colors.white,
+                    checkColor: AppColors.greenColor,
+                    activeColor: AppColors.whiteColor,
                   ),
                 ),
                 Text(
@@ -94,8 +96,6 @@ class _FilterPopupWidgetState extends State<FilterPopupWidget> {
                 ),
               ],
             ),
-
-            
             Row(
               children: [
                 Transform.scale(
@@ -104,8 +104,8 @@ class _FilterPopupWidgetState extends State<FilterPopupWidget> {
                     shape: CircleBorder(),
                     value: freeDelivery,
                     onChanged: (value) => setState(() => freeDelivery = value!),
-                    checkColor: Colors.green,
-                    activeColor: Colors.white,
+                    checkColor: AppColors.greenColor,
+                    activeColor: AppColors.whiteColor,
                   ),
                 ),
                 Text(
@@ -118,8 +118,7 @@ class _FilterPopupWidgetState extends State<FilterPopupWidget> {
         ),
       ),
       actions: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: widget.width * .1),
+        Center(
           child: Customauthbutton(
             textColor: AppColors.whiteColor,
             buttonText: "Apply Filter ",

@@ -1,15 +1,16 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
 
 class Phonewidget extends StatelessWidget {
   final Function(String)? onChanged;
   final String labelText_top;
   final double width;
+  final Orientation orientation;
   const Phonewidget(
       {super.key,
       this.onChanged,
       required this.labelText_top,
-      required this.width});
+      required this.width,
+      this.orientation = Orientation.portrait});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,9 @@ class Phonewidget extends StatelessWidget {
           child: Text(
             "  $labelText_top",
             style: TextStyle(
-              fontSize: width * 0.04,
+              fontSize: orientation == Orientation.portrait
+                  ? width * 0.04
+                  : width * 0.025,
               fontWeight: FontWeight.w500,
               color: Colors.grey.shade600,
             ),

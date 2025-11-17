@@ -1,6 +1,4 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/views/Auth/UI/widgets/CustomAuthButton.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
 
 class OtpCode extends StatefulWidget {
   const OtpCode({super.key});
@@ -37,13 +35,17 @@ class _OtpCodeState extends State<OtpCode> {
                     size.height(height * 0.05),
                     TitleText(
                       text: "Fruit Market",
-                      fontSize: width * 0.11,
+                      fontSize: deviceInfo.orientation == Orientation.portrait
+                          ? width * 0.11
+                          : width * 0.06,
                       color: AppColors.title_text,
                     ),
                     size.height(height * 0.01),
                     TitleText(
                       text: "Enter Received OTP",
-                      fontSize: width * 0.07,
+                      fontSize: deviceInfo.orientation == Orientation.portrait
+                          ? width * 0.07
+                          : width * 0.03,
                       color: Colors.black,
                     ),
                     size.height(height * 0.04),
@@ -60,7 +62,10 @@ class _OtpCodeState extends State<OtpCode> {
                       pinTheme: PinTheme(
                         shape: PinCodeFieldShape.circle,
                         borderRadius: BorderRadius.circular(8),
-                        fieldHeight: width * 0.15,
+                        fieldHeight:
+                            deviceInfo.orientation == Orientation.portrait
+                                ? width * 0.15
+                                : width * 0.08,
                         fieldWidth: width * 0.13,
                         activeFillColor: Colors.white,
                         selectedFillColor: Colors.white,
@@ -82,6 +87,7 @@ class _OtpCodeState extends State<OtpCode> {
                     Customauthbutton(
                       textColor: AppColors.whiteColor,
                       buttonText: "Confirm",
+                      orientation: deviceInfo.orientation,
                       buttonColor: AppColors.button_Color,
                       height: height,
                       width: width,
@@ -93,7 +99,9 @@ class _OtpCodeState extends State<OtpCode> {
                     size.height(height * 0.04),
                     TextUnder(
                         onTap: () {},
-                        width: width,
+                        width: deviceInfo.orientation == Orientation.portrait
+                            ? width
+                            : width * 0.5,
                         text: "Not received OTP?   ",
                         buttonText: "Send again"),
                   ])));

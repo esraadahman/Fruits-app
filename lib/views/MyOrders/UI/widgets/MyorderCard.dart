@@ -1,6 +1,4 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/Core/constants/decoration.dart';
-import 'package:fruits_app/views/Home/UI/widgets/subWidgets/pointWidget.dart';
 
 class MyorderCard extends StatelessWidget {
   const MyorderCard({
@@ -108,7 +106,6 @@ class MyorderCard extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            size.height(height * .02),
                           ]),
                     ),
                   ),
@@ -120,7 +117,9 @@ class MyorderCard extends StatelessWidget {
                   child: CircleAvatar(
                       radius: width * 0.1,
                       backgroundColor: colorsCreated.withOpacity(.4),
-                      child: Image.asset("assets/images/Myorder.png"))),
+                      child: Image.asset(
+                        "assets/images/Myorder.png",
+                      ))),
             ]));
   }
 }

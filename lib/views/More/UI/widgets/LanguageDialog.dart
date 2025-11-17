@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:fruits_app/Core/constants/colors.dart';
-import 'package:fruits_app/Core/constants/sizeClass.dart';
-import 'package:fruits_app/views/Auth/UI/widgets/CustomAuthButton.dart';
+import 'package:fruits_app/Core/commonImports/commonImports.dart';
 
 class LanguageDialog extends StatefulWidget {
   final String initialLanguage;

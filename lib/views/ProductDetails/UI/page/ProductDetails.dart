@@ -1,10 +1,4 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/views/Auth/UI/widgets/CustomAuthButton.dart';
-import 'package:fruits_app/views/Home/UI/widgets/AppBarWidget.dart';
-import 'package:fruits_app/views/ProductDetails/UI/widget/ImageWidget.dart';
-import 'package:fruits_app/views/ProductDetails/UI/widget/ProductName.dart';
-import 'package:fruits_app/views/ProductDetails/UI/widget/SelectSection.dart';
-import 'package:fruits_app/views/navi/NavBar.dart';
 
 class ProductDetails extends StatelessWidget {
   const ProductDetails({super.key});
@@ -15,8 +9,8 @@ class ProductDetails extends StatelessWidget {
       double width = deviceInfo.localWidth;
       double height = deviceInfo.localHeight;
       return Scaffold(
-        backgroundColor: AppColors.whiteColor,
         appBar: AppBarWidget(
+          orientation: deviceInfo.orientation,
           width: width,
           title: "Product Name",
           centerTitle: true,
@@ -28,11 +22,17 @@ class ProductDetails extends StatelessWidget {
               icon: Icon(Icons.arrow_back_ios_new)),
           actions: [
             IconButton(
-              icon: Icon(Icons.favorite_border, size: width * 0.07),
+              icon: Icon(Icons.favorite_border,
+                  size: deviceInfo.orientation == Orientation.portrait
+                      ? width * 0.07
+                      : width * 0.04),
               onPressed: () {},
             ),
             IconButton(
-              icon: Icon(Icons.file_upload_outlined, size: width * 0.07),
+              icon: Icon(Icons.file_upload_outlined,
+                  size: deviceInfo.orientation == Orientation.portrait
+                      ? width * 0.07
+                      : width * 0.04),
               onPressed: () {},
             ),
           ],
@@ -45,7 +45,9 @@ class ProductDetails extends StatelessWidget {
               children: [
                 ImageWidget(
                   width: width,
-                  height: height,
+                  height: deviceInfo.orientation == Orientation.portrait
+                      ? height
+                      : height * 1.5,
                   imagePath: "assets/images/product.png",
                   sale: 10,
                 ),
@@ -54,21 +56,31 @@ class ProductDetails extends StatelessWidget {
                   " Category Name",
                   style: TextStyle(
                       color: AppColors.button_Color,
-                      fontSize: width * .04,
+                      fontSize: deviceInfo.orientation == Orientation.portrait
+                          ? width * .04
+                          : width * 0.03,
                       fontWeight: FontWeight.bold),
                 ),
                 size.height(height * .01),
                 ProductName(
-                  width: width,
+                  width: deviceInfo.orientation == Orientation.portrait
+                      ? width
+                      : width * .7,
                   productname: " Product Name",
                   price: "KD12.00",
                   old_price: "KD14.00",
                 ),
                 size.height(height * .02),
-                descriptionWidget(width: width),
+                descriptionWidget(
+                  width: deviceInfo.orientation == Orientation.portrait
+                      ? width
+                      : width * .6,
+                ),
                 size.height(height * .02),
                 SelectSection(
-                  width: width,
+                  width: deviceInfo.orientation == Orientation.portrait
+                      ? width
+                      : width * .7,
                   options: [
                     {'label': '50 Gram', 'price': '4.00 KD'},
                     {'label': '100 Gram', 'price': '7.00 KD'},
@@ -79,7 +91,9 @@ class ProductDetails extends StatelessWidget {
                 ),
                 size.height(height * .02),
                 SelectSection(
-                  width: width,
+                  width: deviceInfo.orientation == Orientation.portrait
+                      ? width
+                      : width * .7,
                   options: [
                     {'label': '50 Gram', 'price': '4.00 KD'},
                     {'label': '250 Gram', 'price': '15.00 KD'},
@@ -97,8 +111,11 @@ class ProductDetails extends StatelessWidget {
                       iconData: Icons.shopping_basket_outlined,
                       buttonColor: AppColors.button_Color,
                       height: height,
-                      width: width),
-                )
+                      width: deviceInfo.orientation == Orientation.portrait
+                          ? width
+                          : width * 0.5),
+                ),
+                size.height(height * .03),
               ],
             ),
           ),

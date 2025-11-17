@@ -6,8 +6,10 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final bool? centerTitle;
   final List<Widget>? actions;
   final Widget? leading;
+  final Orientation orientation;
 
   const AppBarWidget({
+    this.orientation = Orientation.portrait,
     super.key,
     required this.width,
     this.title,
@@ -20,13 +22,11 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       forceMaterialTransparency: true,
-      elevation: 0,
-      backgroundColor: AppColors.whiteColor,
       leading: leading,
       title: TitleText(
         text: title ?? "Fruit Market",
-        fontSize: width * 0.06,
-        
+        fontSize:
+            orientation == Orientation.portrait ? width * 0.06 : width * 0.04,
         color: AppColors.title_text,
       ),
       centerTitle: centerTitle ?? false,

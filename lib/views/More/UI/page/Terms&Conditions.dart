@@ -1,5 +1,4 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/views/Home/UI/widgets/AppBarWidget.dart';
 
 class TermsAndConditions extends StatelessWidget {
   const TermsAndConditions({super.key});
@@ -8,10 +7,10 @@ class TermsAndConditions extends StatelessWidget {
   Widget build(BuildContext context) {
     return Infowidget(builder: (context, deviceInfo) {
       double width = deviceInfo.localWidth;
-      double height = deviceInfo.localHeight;
+
       return Scaffold(
-        backgroundColor: AppColors.whiteColor,
         appBar: AppBarWidget(
+          orientation: deviceInfo.orientation,
           width: width,
           centerTitle: true,
           title: "Terms And Conditions",
@@ -41,7 +40,9 @@ class TermsAndConditions extends StatelessWidget {
         Terms and Conditions agreements are also known as Terms of Service or Terms of Use agreements. These terms are interchangeable, practically speaking.More rarely, it may be called something like an End User Services Agreement (EUSA).
               """,
                     style: TextStyle(
-                      fontSize: width * 0.04,
+                      fontSize: deviceInfo.orientation == Orientation.portrait
+                          ? width * 0.04
+                          : width * 0.025,
                       height: 1.6,
                       fontWeight: FontWeight.w500,
                       color: Colors.black87,

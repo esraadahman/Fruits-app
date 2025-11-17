@@ -1,10 +1,4 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/views/Home/UI/pages/Home.dart';
-import 'package:fruits_app/views/Home/UI/widgets/AppBarWidget.dart';
-import 'package:fruits_app/views/Home/UI/widgets/SellerCard.dart';
-import 'package:fruits_app/views/Home/UI/widgets/TextRowWidget.dart';
-import 'package:fruits_app/views/Search/UI/Widget/FilterPopupWidget.dart';
-import 'package:fruits_app/views/navi/NavBar.dart';
 
 class Searchscreen extends StatelessWidget {
   const Searchscreen({super.key});
@@ -17,6 +11,7 @@ class Searchscreen extends StatelessWidget {
       return Scaffold(
         backgroundColor: AppColors.whiteColor,
         appBar: AppBarWidget(
+          orientation: deviceInfo.orientation,
           width: width,
           leading: IconButton(
               onPressed: () {
@@ -26,12 +21,16 @@ class Searchscreen extends StatelessWidget {
               icon: Icon(Icons.arrow_back_ios_new)),
           actions: [
             IconButton(
-              icon: Icon(Icons.tune, size: width * 0.07),
+              icon: Icon(Icons.tune,
+                  size: deviceInfo.orientation == Orientation.portrait
+                      ? width * 0.07
+                      : width * 0.04),
               onPressed: () {
                 showDialog(
                   context: context,
                   builder: (context) {
                     return FilterPopupWidget(
+                      orientation: deviceInfo.orientation,
                       onApply: (selected, open, free) {
                         // setState(() {
                         //   category = selected;
@@ -39,8 +38,12 @@ class Searchscreen extends StatelessWidget {
                         //   freeDelivery = free;
                         // });
                       },
-                      width: width,
-                      height: height,
+                      width: deviceInfo.orientation == Orientation.portrait
+                          ? width
+                          : width * 0.5,
+                      height: deviceInfo.orientation == Orientation.portrait
+                          ? height
+                          : height * 1.5,
                     );
                   },
                 );
@@ -59,12 +62,18 @@ class Searchscreen extends StatelessWidget {
                   decoration: InputDecoration(
                     prefixIcon: Icon(
                       Icons.search,
-                      color: Colors.grey,
-                      size: width * .05,
+                      color: AppColors.grayColor.withOpacity(0.5),
+                      size: deviceInfo.orientation == Orientation.portrait
+                          ? width * .05
+                          : width * 0.04,
                     ),
                     hintText: "What are you looking for ? ",
-                    hintStyle:
-                        TextStyle(fontSize: width * 0.035, color: Colors.grey),
+                    hintStyle: TextStyle(
+                      fontSize: deviceInfo.orientation == Orientation.portrait
+                          ? width * 0.035
+                          : width * .025,
+                      color: AppColors.grayColor.withOpacity(0.5),
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -74,7 +83,9 @@ class Searchscreen extends StatelessWidget {
               ),
               size.height(height * .05),
               TextRowwidget(
-                  width: width,
+                  width: deviceInfo.orientation == Orientation.portrait
+                      ? width
+                      : width * .7,
                   textTitle: "Top sellers",
                   subTextTilte: 'Show All',
                   onPressed: () {}),
@@ -83,8 +94,12 @@ class Searchscreen extends StatelessWidget {
                   child: ListView.separated(
                       itemBuilder: (context, index) {
                         return SellerCard(
-                          height: height,
-                          width: width,
+                          height: deviceInfo.orientation == Orientation.portrait
+                              ? height
+                              : height * 1.7,
+                          width: deviceInfo.orientation == Orientation.portrait
+                              ? width
+                              : width * .5,
                           sellerName: "Seller name",
                           deliveryCharges: "0.5 KD",
                           status: "Open ",

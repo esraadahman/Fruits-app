@@ -1,12 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/views/Auth/UI/widgets/CustomAuthButton.dart';
-import 'package:fruits_app/views/Favorite/UI/page/Favorite.dart';
-import 'package:fruits_app/views/Home/UI/widgets/AppBarWidget.dart';
-import 'package:fruits_app/views/More/UI/page/ContactUs.dart';
-import 'package:fruits_app/views/More/UI/page/ProfileScreen.dart';
-import 'package:fruits_app/views/More/UI/page/Terms&Conditions.dart';
-import 'package:fruits_app/views/More/UI/widgets/LanguageDialog.dart';
 
 class MoreScreen extends StatelessWidget {
   const MoreScreen({super.key, this.onNavItemSelected});
@@ -19,8 +11,8 @@ class MoreScreen extends StatelessWidget {
       double width = deviceInfo.localWidth;
       double height = deviceInfo.localHeight;
       return Scaffold(
-        backgroundColor: AppColors.whiteColor,
         appBar: AppBarWidget(
+          orientation: deviceInfo.orientation,
           width: width,
           title: "Fruit Market",
           centerTitle: true,
@@ -36,14 +28,26 @@ class MoreScreen extends StatelessWidget {
               Column(
                 children: [
                   size.height(height * 0.01),
-                  ProfileImage(width: width, image: image),
+                  ProfileImage(
+                      width: deviceInfo.orientation == Orientation.portrait
+                          ? width
+                          : height,
+                      image: image),
                   size.height(height * 0.01),
-                  TextLineWidget(width: width),
+                  TextLineWidget(
+                      width: deviceInfo.orientation == Orientation.portrait
+                          ? width
+                          : height),
                   size.height(height * 0.022),
                   SizedBox(
-                    width: width * 0.8,
-                    height: height * 0.06,
+                    width: deviceInfo.orientation == Orientation.portrait
+                        ? width * 0.8
+                        : width * 0.6,
+                    height: deviceInfo.orientation == Orientation.portrait
+                        ? height * 0.06
+                        : height * 0.12,
                     child: Customauthbutton(
+                      orientation: deviceInfo.orientation,
                       textColor: AppColors.whiteColor,
                       buttonText: "Login",
                       buttonColor: AppColors.button_Color,
@@ -55,8 +59,12 @@ class MoreScreen extends StatelessWidget {
                 ],
               ),
               ContainerWidget(
-                width: width,
-                height: height,
+                height: deviceInfo.orientation == Orientation.portrait
+                    ? height
+                    : height * 1.7,
+                width: deviceInfo.orientation == Orientation.portrait
+                    ? width
+                    : width * .7,
                 onClick: () {
                   context.navigateTo(ProfileScreen());
                 },
@@ -64,8 +72,12 @@ class MoreScreen extends StatelessWidget {
                 text: "Profile",
               ),
               ContainerWidget(
-                width: width,
-                height: height,
+                height: deviceInfo.orientation == Orientation.portrait
+                    ? height
+                    : height * 1.7,
+                width: deviceInfo.orientation == Orientation.portrait
+                    ? width
+                    : width * .7,
                 onClick: () {
                   onNavItemSelected?.call(1);
                 },
@@ -73,8 +85,12 @@ class MoreScreen extends StatelessWidget {
                 text: "My Orders",
               ),
               ContainerWidget(
-                width: width,
-                height: height,
+                height: deviceInfo.orientation == Orientation.portrait
+                    ? height
+                    : height * 1.7,
+                width: deviceInfo.orientation == Orientation.portrait
+                    ? width
+                    : width * .7,
                 onClick: () {
                   //  context.navigateTo(Favorite());
                   onNavItemSelected?.call(3);
@@ -83,8 +99,12 @@ class MoreScreen extends StatelessWidget {
                 text: "Favorite",
               ),
               ContainerWidget(
-                width: width,
-                height: height,
+                height: deviceInfo.orientation == Orientation.portrait
+                    ? height
+                    : height * 1.7,
+                width: deviceInfo.orientation == Orientation.portrait
+                    ? width
+                    : width * .7,
                 onClick: () {
                   showDialog(
                     context: context,
@@ -102,8 +122,12 @@ class MoreScreen extends StatelessWidget {
                 text: "Language",
               ),
               ContainerWidget(
-                width: width,
-                height: height,
+                height: deviceInfo.orientation == Orientation.portrait
+                    ? height
+                    : height * 1.7,
+                width: deviceInfo.orientation == Orientation.portrait
+                    ? width
+                    : width * .7,
                 onClick: () {
                   context.navigateTo(ContactUsScreen());
                 },
@@ -111,8 +135,12 @@ class MoreScreen extends StatelessWidget {
                 text: "Support",
               ),
               ContainerWidget(
-                width: width,
-                height: height,
+                height: deviceInfo.orientation == Orientation.portrait
+                    ? height
+                    : height * 1.7,
+                width: deviceInfo.orientation == Orientation.portrait
+                    ? width
+                    : width * .7,
                 onClick: () {
                   context.navigateTo(TermsAndConditions());
                 },
@@ -120,14 +148,19 @@ class MoreScreen extends StatelessWidget {
                 text: "Terms & Conditions",
               ),
               ContainerWidget(
-                width: width,
-                height: height,
+                height: deviceInfo.orientation == Orientation.portrait
+                    ? height
+                    : height * 1.7,
+                width: deviceInfo.orientation == Orientation.portrait
+                    ? width
+                    : width * .7,
                 onClick: () {
                   // About Us page
                 },
                 icon: Icons.info_outline,
                 text: "About Us",
               ),
+              size.height(height * 0.02),
             ],
           ),
         ),
@@ -216,30 +249,32 @@ class ContainerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onClick,
-      child: Container(
-        height: height * 0.07,
-        width: width * 0.9,
-        margin: EdgeInsets.symmetric(
-            vertical: height * 0.008, horizontal: width * .04),
-        decoration: BoxDecoration(
-          color: AppColors.whiteColor,
-        ),
-        child: ListTile(
-          leading:
-              Icon(icon, color: AppColors.button_Color, size: width * 0.08),
-          title: Text(
-            text,
-            style: TextStyle(
-              fontSize: width * 0.04,
-              color: AppColors.blackColor,
+      child: Center(
+        child: Container(
+          height: height * 0.07,
+          width: width * 0.9,
+          margin: EdgeInsets.symmetric(
+              vertical: height * 0.008, horizontal: width * .04),
+          decoration: BoxDecoration(
+            color: AppColors.whiteColor,
+          ),
+          child: ListTile(
+            leading:
+                Icon(icon, color: AppColors.button_Color, size: width * 0.08),
+            title: Text(
+              text,
+              style: TextStyle(
+                fontSize: width * 0.04,
+                color: AppColors.blackColor,
+              ),
             ),
+            trailing: Icon(
+              Icons.arrow_forward_ios,
+              color: AppColors.button_Color,
+              size: width * 0.04,
+            ),
+            onTap: onClick,
           ),
-          trailing: Icon(
-            Icons.arrow_forward_ios,
-            color: AppColors.button_Color,
-            size: width * 0.04,
-          ),
-          onTap: onClick,
         ),
       ),
     );

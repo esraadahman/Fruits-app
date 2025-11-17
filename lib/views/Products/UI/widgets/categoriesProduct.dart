@@ -1,5 +1,5 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/views/Home/UI/widgets/categoriesWidget.dart';
+
 
 class CategoriesProduct extends StatelessWidget {
   const CategoriesProduct({

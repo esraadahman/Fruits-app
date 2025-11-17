@@ -1,12 +1,4 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/Core/constants/Lists.dart';
-import 'package:fruits_app/views/Home/UI/widgets/AppBarWidget.dart';
-import 'package:fruits_app/views/Home/UI/widgets/PonitsWidget.dart';
-import 'package:fruits_app/views/Home/UI/widgets/SellerCard.dart';
-import 'package:fruits_app/views/Home/UI/widgets/TextRowWidget.dart';
-import 'package:fruits_app/views/Home/UI/widgets/categoriesWidget.dart';
-import 'package:fruits_app/views/Products/UI/page/productsScreen.dart';
-import 'package:fruits_app/views/Search/UI/page/searchScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -26,18 +18,24 @@ class _HomeScreenState extends State<HomeScreen> {
         double width = deviceInfo.localWidth;
         double height = deviceInfo.localHeight;
         return Scaffold(
-            backgroundColor: AppColors.whiteColor,
             appBar: AppBarWidget(
+              orientation: deviceInfo.orientation,
               width: width,
               actions: [
                 IconButton(
-                  icon: Icon(Icons.search, size: width * 0.07),
+                  icon: Icon(Icons.search,
+                      size: deviceInfo.orientation == Orientation.portrait
+                          ? width * 0.07
+                          : width * 0.04),
                   onPressed: () {
                     context.navigateToEasy(Searchscreen());
                   },
                 ),
                 IconButton(
-                  icon: Icon(Icons.tune, size: width * 0.07),
+                  icon: Icon(Icons.tune,
+                      size: deviceInfo.orientation == Orientation.portrait
+                          ? width * 0.07
+                          : width * 0.04),
                   onPressed: () {
                     context.navigateToEasy(ProductsScreen());
                   },
@@ -48,7 +46,9 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: height * 0.2,
+                    height: deviceInfo.orientation == Orientation.portrait
+                        ? height * 0.2
+                        : height * 0.5,
                     width: width,
                     child: PageView.builder(
                       itemCount: images.length,
@@ -89,7 +89,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         spacing: width * 0.04,
                         children: categoriesHome.map((cat) {
                           return categoriesWidget(
-                            height: height,
+                            height:
+                                deviceInfo.orientation == Orientation.portrait
+                                    ? height
+                                    : height * 2,
                             imagepath: cat['image']!,
                             width: width,
                           );
@@ -97,8 +100,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   ),
+                  size.height(height * .01),
                   TextRowwidget(
-                      width: width,
+                      width: deviceInfo.orientation == Orientation.portrait
+                          ? width
+                          : width * .7,
                       textTitle: "Sellers",
                       subTextTilte: 'Show All',
                       onPressed: () {}),
@@ -108,8 +114,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: ListView.separated(
                           itemBuilder: (context, index) {
                             return SellerCard(
-                              height: height,
-                              width: width,
+                              height:
+                                  deviceInfo.orientation == Orientation.portrait
+                                      ? height
+                                      : height * 1.7,
+                              width:
+                                  deviceInfo.orientation == Orientation.portrait
+                                      ? width
+                                      : width * .5,
                               sellerName: "Seller name $index",
                               deliveryCharges: "0.5 KD",
                               status: "Open",

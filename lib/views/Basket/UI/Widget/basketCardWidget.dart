@@ -1,8 +1,4 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/Core/constants/decoration.dart';
-import 'package:fruits_app/views/Basket/UI/Widget/CountWidget.dart';
-import 'package:fruits_app/views/Basket/UI/Widget/SaleWidget.dart';
-import 'package:fruits_app/views/Home/UI/widgets/subWidgets/imageCircleAvater.dart';
 
 class BasketCardWidget extends StatelessWidget {
   const BasketCardWidget(

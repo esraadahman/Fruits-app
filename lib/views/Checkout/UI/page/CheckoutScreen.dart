@@ -1,8 +1,4 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/views/Checkout/UI/page/CheckoutStep1.dart';
-import 'package:fruits_app/views/Checkout/UI/page/CheckoutStep2.dart';
-import 'package:fruits_app/views/Checkout/UI/page/CheckoutStep3.dart';
-import 'package:fruits_app/views/Home/UI/widgets/AppBarWidget.dart';
 
 class CheckoutScreen extends StatefulWidget {
   const CheckoutScreen({super.key});

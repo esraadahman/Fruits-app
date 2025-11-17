@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
 import 'package:intl/intl.dart';
 

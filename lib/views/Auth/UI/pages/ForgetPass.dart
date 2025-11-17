@@ -1,7 +1,4 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/views/Auth/UI/pages/otp_code.dart';
-import 'package:fruits_app/views/Auth/UI/widgets/CustomAuthButton.dart';
-import 'package:fruits_app/views/Auth/UI/widgets/PhoneWidget.dart';
 
 class Forgetpass extends StatelessWidget {
   const Forgetpass({super.key});
@@ -33,18 +30,23 @@ class Forgetpass extends StatelessWidget {
                     size.height(height * 0.05),
                     TitleText(
                       text: "Fruit Market",
-                      fontSize: width * 0.11,
+                      fontSize: deviceInfo.orientation == Orientation.portrait
+                          ? width * 0.11
+                          : width * 0.06,
                       color: AppColors.title_text,
                     ),
                     size.height(height * 0.01),
                     TitleText(
                       text: "Enter your phone ",
-                      fontSize: width * 0.07,
+                      fontSize: deviceInfo.orientation == Orientation.portrait
+                          ? width * 0.07
+                          : width * 0.03,
                       color: Colors.black,
                     ),
                     size.height(height * 0.04),
                     Phonewidget(
                       labelText_top: "Phone Number",
+                      orientation: deviceInfo.orientation,
                       width: width,
                       onChanged: (value) {
                         // cubit.phone_login = value;
@@ -54,6 +56,7 @@ class Forgetpass extends StatelessWidget {
                     size.height(height * 0.02),
                     Customauthbutton(
                       textColor: AppColors.whiteColor,
+                      orientation: deviceInfo.orientation,
                       buttonText: "Submit",
                       buttonColor: AppColors.button_Color,
                       height: height,
@@ -63,6 +66,7 @@ class Forgetpass extends StatelessWidget {
                         context.navigateTo(OtpCode());
                       },
                     ),
+                    size.height(height * 0.02),
                   ]))));
         })));
   }

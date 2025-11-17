@@ -1,10 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/views/Auth/UI/pages/ForgetPass.dart';
-import 'package:fruits_app/views/Auth/UI/widgets/CustomAuthButton.dart';
-import 'package:fruits_app/views/Auth/UI/widgets/PhoneWidget.dart';
-import 'package:fruits_app/views/Auth/cubit/cubit/auth2_cubit.dart';
-import 'package:fruits_app/views/navi/NavBar.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -20,9 +15,7 @@ class Login extends StatelessWidget {
         builder: (context, state) {
           final cubit = BlocProvider.of<Auth2Cubit>(context);
           return Scaffold(
-              backgroundColor: AppColors.whiteColor,
               appBar: AppBar(
-                backgroundColor: AppColors.whiteColor,
                 leading: IconButton(
                   icon: const Icon(
                     Icons.arrow_back_ios_new,
@@ -44,18 +37,25 @@ class Login extends StatelessWidget {
                             size.height(height * 0.05),
                             TitleText(
                               text: "Fruit Market",
-                              fontSize: width * 0.11,
+                              fontSize:
+                                  deviceInfo.orientation == Orientation.portrait
+                                      ? width * 0.11
+                                      : width * 0.06,
                               color: AppColors.title_text,
                             ),
                             size.height(height * 0.01),
                             TitleText(
                               text: "Login to Wikala",
-                              fontSize: width * 0.07,
+                              fontSize:
+                                  deviceInfo.orientation == Orientation.portrait
+                                      ? width * 0.07
+                                      : width * 0.03,
                               color: Colors.black,
                             ),
                             size.height(height * 0.04),
                             Phonewidget(
                               labelText_top: "Phone Number",
+                              orientation: deviceInfo.orientation,
                               width: width,
                               onChanged: (value) {
                                 cubit.phone_login = value;
@@ -65,6 +65,7 @@ class Login extends StatelessWidget {
                             Customtextfiled(
                               hintText: "Password",
                               labelText: "Password",
+                              orientation: deviceInfo.orientation,
                               prefixIcon: null,
                               obscureText: true,
                               labelText_top: "Password",
@@ -96,7 +97,10 @@ class Login extends StatelessWidget {
                                     color: Colors.blue,
                                     decoration: TextDecoration.underline,
                                     decorationColor: Colors.blue,
-                                    fontSize: width * 0.04,
+                                    fontSize: deviceInfo.orientation ==
+                                            Orientation.portrait
+                                        ? width * 0.04
+                                        : width * 0.025,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 ),
@@ -108,6 +112,7 @@ class Login extends StatelessWidget {
                               buttonText: "Login",
                               buttonColor: AppColors.button_Color,
                               height: height,
+                              orientation: deviceInfo.orientation,
                               width: width,
                               onTap: () {
                                 cubit.login();
@@ -120,9 +125,13 @@ class Login extends StatelessWidget {
                                 onTap: () {
                                   context.navigateToEasy(Signup());
                                 },
-                                width: width,
+                                width: deviceInfo.orientation ==
+                                        Orientation.portrait
+                                    ? width
+                                    : width * 0.5,
                                 text: "Don't have account ? ",
                                 buttonText: "sign Up"),
+                            size.height(height * .02)
                           ]),
                         )));
               })));

@@ -1,14 +1,4 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/Core/constants/Lists.dart';
-import 'package:fruits_app/views/Home/UI/widgets/AppBarWidget.dart';
-import 'package:fruits_app/views/Home/UI/widgets/TextRowWidget.dart';
-import 'package:fruits_app/views/Home/UI/widgets/categoriesWidget.dart';
-import 'package:fruits_app/views/ProductDetails/UI/page/ProductDetails.dart';
-import 'package:fruits_app/views/Products/UI/widgets/CardProduct.dart';
-import 'package:fruits_app/views/Products/UI/widgets/RowProductWidget.dart';
-import 'package:fruits_app/views/Products/UI/widgets/categoriesProduct.dart';
-import 'package:fruits_app/views/Products/UI/widgets/SellerCardProduct.dart';
-import 'package:fruits_app/views/navi/NavBar.dart';
 
 class ProductsScreen extends StatelessWidget {
   const ProductsScreen({super.key});
@@ -20,8 +10,8 @@ class ProductsScreen extends StatelessWidget {
         double width = deviceInfo.localWidth;
         double height = deviceInfo.localHeight;
         return Scaffold(
-          backgroundColor: AppColors.whiteColor,
           appBar: AppBarWidget(
+            orientation: deviceInfo.orientation,
             centerTitle: true,
             width: width,
             leading: IconButton(
@@ -29,10 +19,15 @@ class ProductsScreen extends StatelessWidget {
                   // context.goBack();
                   context.navigateToEasy(NavBarSection());
                 },
-                icon: Icon(Icons.arrow_back_ios_new, size: width * 0.07)),
+                icon: Icon(
+                  Icons.arrow_back_ios_new,
+                )),
             actions: [
               IconButton(
-                icon: Icon(Icons.search, size: width * 0.07),
+                icon: Icon(Icons.search,
+                    size: deviceInfo.orientation == Orientation.portrait
+                        ? width * 0.07
+                        : width * 0.04),
                 onPressed: () {},
               ),
             ],
@@ -42,8 +37,12 @@ class ProductsScreen extends StatelessWidget {
               children: [
                 size.height(height * .02),
                 SellerCardProduct(
-                  height: height,
-                  width: width,
+                  height: deviceInfo.orientation == Orientation.portrait
+                      ? height
+                      : height * 1.7,
+                  width: deviceInfo.orientation == Orientation.portrait
+                      ? width
+                      : width * .7,
                   sellerName: "Seller name",
                   deliveryCharges: "0.5 KD",
                   status: "Open",
@@ -53,7 +52,9 @@ class ProductsScreen extends StatelessWidget {
                   imagePath: "assets/images/logo.png",
                 ),
                 TextRowwidget(
-                    width: width,
+                    width: deviceInfo.orientation == Orientation.portrait
+                        ? width
+                        : width * .7,
                     textTitle: "Categories ",
                     subTextTilte: '',
                     onPressed: () {}),
@@ -71,12 +72,18 @@ class ProductsScreen extends StatelessWidget {
                       print('Pets tapped');
                     }
                   },
-                  height: height,
-                  width: width,
+                  height: deviceInfo.orientation == Orientation.portrait
+                      ? height
+                      : height * 1.7,
+                  width: deviceInfo.orientation == Orientation.portrait
+                      ? width
+                      : width * .7,
                 ),
                 size.height(height * .02),
                 RowProductWidget(
-                  width: width,
+                  width: deviceInfo.orientation == Orientation.portrait
+                      ? width
+                      : width * .7,
                   textTitle: "Products",
                   onClick: () {},
                   imagePath: "assets/images/filter.png",
@@ -90,8 +97,12 @@ class ProductsScreen extends StatelessWidget {
                     ProductName: 'esraa',
                     deliveryCharges: '200km',
                     deliveryCharges_old: '300km',
-                    width: width,
-                    height: height,
+                    height: deviceInfo.orientation == Orientation.portrait
+                        ? height
+                        : height * 1.7,
+                    width: deviceInfo.orientation == Orientation.portrait
+                        ? width
+                        : width * .5,
                     imagePath: "assets/images/logo.png",
                     salePresentage: 20,
                   ),
@@ -100,8 +111,12 @@ class ProductsScreen extends StatelessWidget {
                   ProductName: 'esraa',
                   deliveryCharges: 'Price Upon Selection',
                   deliveryCharges_old: '300km',
-                  width: width,
-                  height: height,
+                  height: deviceInfo.orientation == Orientation.portrait
+                      ? height
+                      : height * 1.7,
+                  width: deviceInfo.orientation == Orientation.portrait
+                      ? width
+                      : width * .5,
                   imagePath: "assets/images/logo.png",
                   salePresentage: 20,
                 )

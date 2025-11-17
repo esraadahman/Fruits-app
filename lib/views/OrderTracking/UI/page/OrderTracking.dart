@@ -1,9 +1,4 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/views/Auth/UI/widgets/CustomAuthButton.dart';
-import 'package:fruits_app/views/Checkout/UI/Widgets/ConfirmStatusWidgets/SubTitle.dart';
-import 'package:fruits_app/views/Home/UI/widgets/AppBarWidget.dart';
-import 'package:fruits_app/views/OrderTracking/UI/widget/CancelOrderDialog.dart';
-import 'package:fruits_app/views/OrderTracking/UI/widget/timeline_tileWidget.dart';
 
 class OrderTracking extends StatelessWidget {
   const OrderTracking({super.key});

@@ -15,6 +15,7 @@ class AppColors {
   static const Color button_Color_dark = Color.fromARGB(255, 17, 63, 41);
   static const Color text_dark = Color(0xFF204F38);
   static const Color redColor = Color(0xFFFF4A4A);
+  static const Color lightGray = Colors.grey;
 
   // Static method to generate random color
   static Color randomColor() {

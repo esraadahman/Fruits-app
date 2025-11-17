@@ -1,12 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/views/Auth/UI/pages/Login.dart';
-import 'package:fruits_app/views/Auth/UI/widgets/CustomAuthButton.dart';
-import 'package:fruits_app/views/Auth/UI/widgets/PhoneWidget.dart';
-import 'package:fruits_app/views/Auth/cubit/cubit/auth2_cubit.dart';
-import 'package:fruits_app/views/navi/NavBar.dart';
-import 'package:fruits_app/views/welcome/Cubit/cubit/auth_cubit_cubit.dart';
 
 class Signup extends StatelessWidget {
   const Signup({super.key});
@@ -22,9 +16,9 @@ class Signup extends StatelessWidget {
         builder: (context, state) {
           final cubit = BlocProvider.of<Auth2Cubit>(context);
           return Scaffold(
-              backgroundColor: AppColors.whiteColor,
               appBar: AppBar(
-                backgroundColor: AppColors.whiteColor,
+                forceMaterialTransparency: true,
+                elevation: 0,
                 leading: IconButton(
                   icon: const Icon(
                     Icons.arrow_back_ios_new,
@@ -46,13 +40,19 @@ class Signup extends StatelessWidget {
                             size.height(height * 0.05),
                             TitleText(
                               text: "Fruit Market",
-                              fontSize: width * 0.11,
+                              fontSize:
+                                  deviceInfo.orientation == Orientation.portrait
+                                      ? width * 0.11
+                                      : width * 0.06,
                               color: AppColors.title_text,
                             ),
                             size.height(height * 0.01),
                             TitleText(
                               text: "Sign Up to Wikala",
-                              fontSize: width * 0.07,
+                              fontSize:
+                                  deviceInfo.orientation == Orientation.portrait
+                                      ? width * 0.07
+                                      : width * 0.03,
                               color: Colors.black,
                             ),
                             size.height(height * 0.04),
@@ -63,6 +63,7 @@ class Signup extends StatelessWidget {
                               keyboardType: TextInputType.name,
                               labelText_top: "Full Name",
                               width: width,
+                              orientation: deviceInfo.orientation,
                               onChanged: (value) {
                                 cubit.fullname = value;
                                 print(cubit.fullname);
@@ -81,6 +82,7 @@ class Signup extends StatelessWidget {
                             size.height(height * 0.02),
                             Phonewidget(
                               labelText_top: "Phone Number",
+                              orientation: deviceInfo.orientation,
                               width: width,
                               onChanged: (value) {
                                 cubit.phone_signup = value;
@@ -93,6 +95,7 @@ class Signup extends StatelessWidget {
                               prefixIcon: null,
                               obscureText: true,
                               labelText_top: "Password",
+                              orientation: deviceInfo.orientation,
                               width: width,
                               onChanged: (value) {
                                 cubit.password_signup = value;
@@ -108,12 +111,13 @@ class Signup extends StatelessWidget {
                                 }
                               },
                             ),
-                            size.height(height * 0.02),
+                            size.height(height * 0.03),
                             Customauthbutton(
                               textColor: AppColors.whiteColor,
                               buttonText: "Sign Up",
                               buttonColor: AppColors.button_Color,
                               height: height,
+                              orientation: deviceInfo.orientation,
                               width: width,
                               onTap: () {
                                 cubit.signup();
@@ -126,9 +130,13 @@ class Signup extends StatelessWidget {
                                 onTap: () {
                                   context.navigateToEasy(Login());
                                 },
-                                width: width,
+                                width: deviceInfo.orientation ==
+                                        Orientation.portrait
+                                    ? width
+                                    : width * 0.5,
                                 text: "Already have an Account ? ",
                                 buttonText: "Login"),
+                            size.height(height * 0.02),
                           ]),
                         )));
               })));

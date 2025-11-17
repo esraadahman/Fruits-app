@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruits_app/views/Auth/UI/pages/Login.dart';
 import 'package:fruits_app/views/welcome/Cubit/cubit/auth_cubit_cubit.dart';
-import 'package:fruits_app/views/welcome/UI/widgets/headTitle.dart';
 import "package:fruits_app/views/welcome/Cubit/cubit/auth_cubit_cubit.dart"
     as googleSignUp;
 
@@ -33,6 +31,8 @@ class Welcomescreen extends StatelessWidget {
           return Scaffold(
               backgroundColor: AppColors.whiteColor,
               appBar: AppBar(
+                forceMaterialTransparency: true,
+                elevation: 0,
                 backgroundColor: AppColors.whiteColor,
                 leading: IconButton(
                   icon: const Icon(
@@ -54,21 +54,27 @@ class Welcomescreen extends StatelessWidget {
                         size.height(height * 0.05),
                         TitleText(
                           text: "Fruit Market",
-                          fontSize: width * 0.11,
+                          fontSize:
+                              deviceInfo.orientation == Orientation.portrait
+                                  ? width * 0.11
+                                  : width * 0.06,
                           color: AppColors.title_text,
                         ),
                         size.height(height * 0.01),
                         TitleText(
                           text: "Welcome to Our app",
-                          fontSize: width * 0.07,
-                          color: Colors.black,
+                          fontSize:
+                              deviceInfo.orientation == Orientation.portrait
+                                  ? width * 0.07
+                                  : width * 0.03,
+                          color: AppColors.blackColor,
                         ),
-                        size.height(height * 0.2),
+                        size.height(height * 0.1),
                         ButtonStyleWidget(
                           height: height,
                           width: width,
-                          borderColor: Colors.grey.shade400,
-                          textColor: Colors.black,
+                          borderColor: AppColors.grayColor.withOpacity(0.4),
+                          textColor: AppColors.blackColor,
                           buttonText: 'Sign in with Phone Number',
                           IconPath: "assets/images/call.png",
                         ),
@@ -76,8 +82,8 @@ class Welcomescreen extends StatelessWidget {
                         ButtonStyleWidget(
                           height: height,
                           width: width,
-                          borderColor: Colors.grey.shade400,
-                          textColor: Colors.black,
+                          borderColor: AppColors.grayColor.withOpacity(0.4),
+                          textColor: AppColors.blackColor,
                           buttonText: state is GoogleSignInLoading
                               ? "Loading....."
                               : 'Sign in with Google',
@@ -100,11 +106,19 @@ class Welcomescreen extends StatelessWidget {
                             onTap: () {
                               context.navigateTo(Login());
                             },
-                            width: width,
+                            width:
+                                deviceInfo.orientation == Orientation.portrait
+                                    ? width
+                                    : width * 0.5,
                             text: "Already member ? ",
                             buttonText: "Sign In"),
                         size.height(height * 0.02),
-                        CopyRight(width: width)
+                        CopyRight(
+                          width: deviceInfo.orientation == Orientation.portrait
+                              ? width
+                              : width * 0.5,
+                        ),
+                        size.height(height * 0.02),
                       ],
                     ),
                   ),

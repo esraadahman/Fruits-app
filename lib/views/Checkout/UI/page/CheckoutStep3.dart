@@ -1,13 +1,4 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/Core/constants/Lists.dart';
-import 'package:fruits_app/Core/constants/decoration.dart';
-import 'package:fruits_app/views/Auth/UI/widgets/CustomAuthButton.dart';
-import 'package:fruits_app/views/Basket/UI/Widget/TotalWidget.dart';
-import 'package:fruits_app/views/Checkout/UI/Widgets/CheckoutProgress.dart';
-import 'package:fruits_app/views/Checkout/UI/Widgets/payment/paymentWidget.dart';
-import 'package:fruits_app/views/Checkout/UI/page/ConfirmStatus/failOrderScreen.dart';
-import 'package:fruits_app/views/Checkout/UI/page/ConfirmStatus/succesOrderScreen.dart';
-import 'package:fruits_app/views/Home/UI/widgets/AppBarWidget.dart';
 
 class CheckoutStep3 extends StatelessWidget {
   const CheckoutStep3(

@@ -1,10 +1,4 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/views/Auth/UI/widgets/CustomAuthButton.dart';
-import 'package:fruits_app/views/Checkout/UI/Widgets/ConfirmStatusWidgets/ImageStatus.dart';
-import 'package:fruits_app/views/Checkout/UI/Widgets/ConfirmStatusWidgets/MainTitle.dart';
-import 'package:fruits_app/views/Checkout/UI/Widgets/ConfirmStatusWidgets/SubTitle.dart';
-import 'package:fruits_app/views/Checkout/UI/page/ConfirmStatus/succesOrderScreen.dart';
-import 'package:fruits_app/views/Home/UI/widgets/AppBarWidget.dart';
 
 class FailOrderScreen extends StatelessWidget {
   const FailOrderScreen({super.key});

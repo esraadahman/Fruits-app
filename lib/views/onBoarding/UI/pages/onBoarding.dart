@@ -28,6 +28,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.whiteColor,
       body: SafeArea(
         child: Infowidget(builder: (context, deviceInfo) {
           return Column(
@@ -41,8 +42,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   child: Text(
                     "Skip",
                     style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: deviceInfo.localWidth * 0.035),
+                        color: AppColors.grayColor.withOpacity(0.6),
+                        fontSize: deviceInfo.orientation == Orientation.portrait
+                            ? deviceInfo.localWidth * 0.04
+                            : deviceInfo.localHeight * 0.06),
                   ),
                 ),
               ),
@@ -74,14 +77,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     height: deviceInfo.localHeight * 0.01,
                     decoration: BoxDecoration(
                       color: currentIndex == index
-                          ? const Color(0xFF003602)
-                          : Colors.grey[300],
+                          ? AppColors.button_Color
+                          : AppColors.grayColor.withOpacity(0.5),
                       borderRadius: BorderRadius.circular(20),
                     ),
                   ),
                 ),
               ),
-              const SizedBox(height: 30),
+              size.height(deviceInfo.localHeight * 0.05),
               Padding(
                 padding: EdgeInsets.only(bottom: deviceInfo.localHeight * 0.05),
                 child: ElevatedButton(
@@ -108,8 +111,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   child: Text(
                     currentIndex == pages.length - 1 ? "Get Started" : "Next",
                     style: TextStyle(
-                      fontSize: deviceInfo.localWidth * 0.045,
-                      color: Colors.white,
+                      fontSize: deviceInfo.orientation == Orientation.portrait
+                          ? deviceInfo.localWidth * 0.045
+                          : deviceInfo.localHeight * 0.06,
+                      color: AppColors.whiteColor,
                     ),
                   ),
                 ),

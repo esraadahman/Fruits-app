@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:fruits_app/Core/commonImports/commonImports.dart';
 
 class DashedLine extends StatelessWidget {
   final Color color;

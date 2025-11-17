@@ -1,11 +1,4 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/Core/constants/decoration.dart';
-import 'package:fruits_app/views/Basket/UI/Widget/CountWidget.dart';
-import 'package:fruits_app/views/Home/UI/widgets/AppBarWidget.dart';
-import 'package:fruits_app/views/Home/UI/widgets/PonitsWidget.dart';
-import 'package:fruits_app/views/Home/UI/widgets/subWidgets/imageCircleAvater.dart';
-import 'package:fruits_app/views/Home/UI/widgets/subWidgets/pointWidget.dart';
-import 'package:fruits_app/views/MyOrders/UI/widgets/MyorderCard.dart';
 
 class MyOrders extends StatelessWidget {
   const MyOrders({super.key});
@@ -20,6 +13,7 @@ class MyOrders extends StatelessWidget {
         backgroundColor: AppColors.whiteColor,
         appBar: AppBarWidget(
           width: width,
+          orientation: deviceInfo.orientation,
           title: "My Orders",
           centerTitle: true,
           leading: IconButton(
@@ -32,8 +26,12 @@ class MyOrders extends StatelessWidget {
                     itemBuilder: (context, index) {
                       Color colorsCreated = AppColors.randomColor();
                       return MyorderCard(
-                          height: height,
-                          width: width,
+                          height: deviceInfo.orientation == Orientation.portrait
+                              ? height * 1
+                              : height * 1.9,
+                          width: deviceInfo.orientation == Orientation.portrait
+                              ? width
+                              : width * .5,
                           colorsCreated: colorsCreated);
                     },
                     separatorBuilder: (context, index) =>

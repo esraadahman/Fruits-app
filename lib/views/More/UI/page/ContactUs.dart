@@ -1,8 +1,6 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
-import 'package:fruits_app/Core/constants/Lists.dart';
-import 'package:fruits_app/views/Auth/UI/widgets/CustomAuthButton.dart';
-import 'package:fruits_app/views/Auth/UI/widgets/PhoneWidget.dart';
-import 'package:fruits_app/views/Home/UI/widgets/AppBarWidget.dart';
+
+
 
 class ContactUsScreen extends StatelessWidget {
   const ContactUsScreen({super.key});

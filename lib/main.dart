@@ -1,10 +1,8 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
+import 'package:fruits_app/Core/utils/Theme/theme.dart';
 import 'package:fruits_app/firebase_options.dart';
-import 'package:fruits_app/views/Home/UI/pages/Home.dart';
-import 'package:fruits_app/views/OrderTracking/UI/page/OrderTracking.dart';
-import 'package:fruits_app/views/navi/NavBar.dart';
+import 'package:fruits_app/Core/commonImports/commonImports.dart';
 import 'package:fruits_app/views/onBoarding/UI/pages/SplashScreen.dart';
 
 void main() async {
@@ -25,10 +23,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
+        theme: appTheme,
         home:
-            // SplashScreen(),
+            //SplashScreen(),
             //HomeScreen()
-            // NaviBarSection(),
+            //NaviBarSection(),
             NavBarSection()
         // OrderTracking()
         );

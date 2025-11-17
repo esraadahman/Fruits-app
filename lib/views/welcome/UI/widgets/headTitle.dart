@@ -5,10 +5,12 @@ class TitleText extends StatelessWidget {
       {super.key,
       required this.text,
       required this.fontSize,
-      required this.color});
+      required this.color,
+ });
   String text;
   double fontSize;
   Color color;
+
 
   @override
   Widget build(BuildContext context) {
