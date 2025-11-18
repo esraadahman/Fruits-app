@@ -17,11 +17,6 @@ class CheckoutStep1 extends StatelessWidget {
       children: [
         Column(
           children: [
-            CheckoutProgress(
-              currentStep: 1,
-              width: width,
-              height: height,
-            ),
             NowRow(
               width: width,
               height: height,

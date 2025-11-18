@@ -21,15 +21,16 @@ class MyorderCard extends StatelessWidget {
             vertical: height * 0.008, horizontal: width * .05),
         decoration: decorationContainer(),
         child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Padding(
-                      padding:
-                          EdgeInsets.only(top: height * .02, left: width * .02),
+                      padding: EdgeInsets.only(
+                          //top: height * .02,
+                          left: width * .02),
                       child: CircleAvatar(
                         radius: width * 0.1,
                         backgroundColor: colorsCreated.withOpacity(.4),
@@ -42,7 +43,7 @@ class MyorderCard extends StatelessWidget {
                   size.width(width * 0.04),
                   Padding(
                     padding: EdgeInsets.only(
-                      top: height * .02,
+                      top: height * .03,
                     ),
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,8 +111,9 @@ class MyorderCard extends StatelessWidget {
                 ],
               ),
               Padding(
-                  padding:
-                      EdgeInsets.only(top: height * .02, right: width * .02),
+                  padding: EdgeInsets.only(
+                      //top: height * .02,
+                      right: width * .02),
                   child: CircleAvatar(
                       radius: width * 0.1,
                       backgroundColor: colorsCreated.withOpacity(.4),

@@ -89,30 +89,56 @@ class Searchscreen extends StatelessWidget {
                   textTitle: "Top sellers",
                   subTextTilte: 'Show All',
                   onPressed: () {}),
-              SizedBox(
-                  height: height,
-                  child: ListView.separated(
-                      itemBuilder: (context, index) {
-                        return SellerCard(
-                          height: deviceInfo.orientation == Orientation.portrait
-                              ? height
-                              : height * 1.7,
-                          width: deviceInfo.orientation == Orientation.portrait
-                              ? width
-                              : width * .5,
-                          sellerName: "Seller name",
-                          deliveryCharges: "0.5 KD",
-                          status: "Open ",
-                          orderName: "Beverages",
-                          distance: "2.5 KM",
-                          rating: 4.5,
-                          imagePath: "assets/images/logo.png",
+              deviceInfo.orientation == Orientation.portrait
+                  ? SizedBox(
+                      height: height,
+                      child: ListView.separated(
+                          itemBuilder: (context, index) {
+                            return SellerCard(
+                              height: height,
+                              width: width,
+                              sellerName: "Seller name",
+                              deliveryCharges: "0.5 KD",
+                              status: "Open ",
+                              orderName: "Beverages",
+                              distance: "2.5 KM",
+                              rating: 4.5,
+                              imagePath: "assets/images/logo.png",
+                            );
+                          },
+                          separatorBuilder: (context, index) {
+                            return size.height(height * .02);
+                          },
+                          itemCount: 10))
+                  : GridView.builder(
+                      itemCount: 10,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      // padding: EdgeInsets.symmetric(horizontal: width * 0.02),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: width * 0.01,
+                        crossAxisSpacing: height * 0.03,
+                        childAspectRatio: (width / height) * 1.4,
+                      ),
+                      itemBuilder: (_, index) {
+                        return GestureDetector(
+                          onTap: () => context.navigateTo(ProductsScreen()),
+                          child: SellerCard(
+                            height: height,
+                            width: width * .5,
+                            sellerName: "Seller $index",
+                            deliveryCharges: "0.5 KD",
+                            status: "Open",
+                            orderName: "Beverages",
+                            distance: "2.5 KM",
+                            rating: 4.5,
+                            imagePath: "assets/images/logo.png",
+                          ),
                         );
                       },
-                      separatorBuilder: (context, index) {
-                        return size.height(height * .02);
-                      },
-                      itemCount: 10)),
+                    ),
+              size.height(height * .02)
             ],
           ),
         ),

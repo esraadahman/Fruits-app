@@ -44,48 +44,70 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           title: "Checkout",
           centerTitle: true,
           leading: IconButton(
-              onPressed: () {
-                context.goBack();
-                // context.navigateToEasy(const NavBarSection());
-              },
-              icon: const Icon(Icons.arrow_back_ios_new)),
+            onPressed: () {
+              context.goBack();
+            },
+            icon: const Icon(Icons.arrow_back_ios_new),
+          ),
         ),
-        body: PageView(
-          controller: _pageController,
-          physics: const NeverScrollableScrollPhysics(), // disable swipe
-          onPageChanged: (index) => setState(() => currentPage = index),
+        body: Column(
           children: [
-            SingleChildScrollView(
-              child: CheckoutStep1(
-                  nextPage: nextPage,
-                  width: deviceInfo.orientation == Orientation.portrait
-                      ? width
-                      : width * .5,
-                  height: deviceInfo.orientation == Orientation.portrait
-                      ? height
-                      : height * 1.7),
-            ),
-            CheckoutStep2(
-              nextPage: nextPage,
-              previousPage: previousPage,
+            CheckoutProgress(
+              currentStep: currentPage + 1,
               width: deviceInfo.orientation == Orientation.portrait
                   ? width
                   : width * .5,
-              height: deviceInfo.orientation == Orientation.portrait
-                  ? height
-                  : height * 1.7,
-              orientation: deviceInfo.orientation,
+              height: height,
             ),
-            SingleChildScrollView(
-              child: CheckoutStep3(
-                  previousPage: previousPage,
-                  width: deviceInfo.orientation == Orientation.portrait
-                      ? width
-                      : width * .5,
-                  height: deviceInfo.orientation == Orientation.portrait
-                      ? height
-                      : height * 1.7),
-            )
+            size.height(height * .02),
+            Expanded(
+              child: PageView(
+                controller: _pageController,
+                physics: const NeverScrollableScrollPhysics(),
+                onPageChanged: (index) {
+                  setState(() {
+                    currentPage = index;
+                  });
+                },
+                children: [
+                  SingleChildScrollView(
+                    child: CheckoutStep1(
+                      nextPage: nextPage,
+                      width: deviceInfo.orientation == Orientation.portrait
+                          ? width
+                          : width * .5,
+                      height: deviceInfo.orientation == Orientation.portrait
+                          ? height
+                          : height * 1.7,
+                    ),
+                  ),
+                  SingleChildScrollView(
+                    child: CheckoutStep2(
+                      nextPage: nextPage,
+                      previousPage: previousPage,
+                      width: deviceInfo.orientation == Orientation.portrait
+                          ? width
+                          : width * .5,
+                      height: deviceInfo.orientation == Orientation.portrait
+                          ? height
+                          : height * 1.7,
+                      orientation: deviceInfo.orientation,
+                    ),
+                  ),
+                  SingleChildScrollView(
+                    child: CheckoutStep3(
+                      previousPage: previousPage,
+                      width: deviceInfo.orientation == Orientation.portrait
+                          ? width
+                          : width * .5,
+                      height: deviceInfo.orientation == Orientation.portrait
+                          ? height
+                          : height * 1.7,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       );

@@ -23,11 +23,6 @@ class CheckoutStep3 extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CheckoutProgress(
-                    currentStep: 3,
-                    width: width,
-                    height: height,
-                  ),
                   labelText(
                     width: width,
                     labeltext: "Coupon Code",

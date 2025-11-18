@@ -22,11 +22,6 @@ class CheckoutStep2 extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CheckoutProgress(
-                currentStep: 2,
-                width: width,
-                height: height,
-              ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: width * .06),
                 child: Text(
