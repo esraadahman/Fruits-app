@@ -15,16 +15,6 @@ class Basketscreen extends StatelessWidget {
           width: width,
           title: "Basket",
           centerTitle: true,
-          leading: IconButton(
-              onPressed: () {
-                // Simply pop the nested navigator
-                //   context.popNested();
-                //    context.goBack();
-                context.navigateToEasy(const NavBarSection());
-                //  context.navigateToAndClearStack(NavBarSection());
-                //   context.navigateTo(NavBarSection());
-              },
-              icon: const Icon(Icons.arrow_back_ios_new)),
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -105,9 +95,7 @@ class Basketscreen extends StatelessWidget {
                 width: deviceInfo.orientation == Orientation.portrait
                     ? width
                     : width * .6,
-
                 height: height,
-                
                 numbers: BasketDetails.length,
                 onclickButton: () {
                   context.navigateTo(CheckoutScreen());

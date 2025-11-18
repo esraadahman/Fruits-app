@@ -36,9 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       size: deviceInfo.orientation == Orientation.portrait
                           ? width * 0.07
                           : width * 0.04),
-                  onPressed: () {
-                    context.navigateToEasy(ProductsScreen());
-                  },
+                  onPressed: () {},
                 ),
               ],
             ),
@@ -113,22 +111,27 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: height * 0.4,
                       child: ListView.separated(
                           itemBuilder: (context, index) {
-                            return SellerCard(
-                              height:
-                                  deviceInfo.orientation == Orientation.portrait
-                                      ? height
-                                      : height * 1.7,
-                              width:
-                                  deviceInfo.orientation == Orientation.portrait
-                                      ? width
-                                      : width * .5,
-                              sellerName: "Seller name $index",
-                              deliveryCharges: "0.5 KD",
-                              status: "Open",
-                              orderName: "Beverages",
-                              distance: "2.5 KM",
-                              rating: 4.5,
-                              imagePath: "assets/images/logo.png",
+                            return GestureDetector(
+                              onTap: () {
+                                context.navigateTo(ProductsScreen());
+                              },
+                              child: SellerCard(
+                                height: deviceInfo.orientation ==
+                                        Orientation.portrait
+                                    ? height
+                                    : height * 1.7,
+                                width: deviceInfo.orientation ==
+                                        Orientation.portrait
+                                    ? width
+                                    : width * .5,
+                                sellerName: "Seller name $index",
+                                deliveryCharges: "0.5 KD",
+                                status: "Open",
+                                orderName: "Beverages",
+                                distance: "2.5 KM",
+                                rating: 4.5,
+                                imagePath: "assets/images/logo.png",
+                              ),
                             );
                           },
                           separatorBuilder: (context, index) {

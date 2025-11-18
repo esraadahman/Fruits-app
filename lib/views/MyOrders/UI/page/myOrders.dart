@@ -16,8 +16,6 @@ class MyOrders extends StatelessWidget {
           orientation: deviceInfo.orientation,
           title: "My Orders",
           centerTitle: true,
-          leading: IconButton(
-              onPressed: () {}, icon: const Icon(Icons.arrow_back_ios_new)),
         ),
         body: Column(
           children: [

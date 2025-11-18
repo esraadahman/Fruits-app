@@ -16,11 +16,6 @@ class MoreScreen extends StatelessWidget {
           width: width,
           title: "Fruit Market",
           centerTitle: true,
-          leading: IconButton(
-              onPressed: () {
-                context.goBack();
-              },
-              icon: const Icon(Icons.arrow_back_ios_new)),
         ),
         body: SingleChildScrollView(
           child: Column(

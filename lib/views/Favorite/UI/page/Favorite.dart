@@ -14,11 +14,6 @@ class Favorite extends StatelessWidget {
           width: width,
           centerTitle: true,
           title: "Favorite",
-          leading: IconButton(
-              onPressed: () {
-                context.goBack();
-              },
-              icon: const Icon(Icons.arrow_back_ios_new)),
         ),
         body: Column(
           children: [

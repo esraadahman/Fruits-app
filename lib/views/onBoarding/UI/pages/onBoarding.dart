@@ -40,7 +40,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     context.navigateTo(Welcomescreen());
                   },
                   child: Text(
-                    "Skip",
+                    currentIndex == pages.length - 1 ? "" : "Skip",
                     style: TextStyle(
                         color: AppColors.grayColor.withOpacity(0.6),
                         fontSize: deviceInfo.orientation == Orientation.portrait
@@ -90,7 +90,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 child: ElevatedButton(
                   onPressed: () {
                     if (currentIndex == pages.length - 1) {
-                      context.navigateTo(Welcomescreen());
+                      context.navigateToEasy(Welcomescreen());
                     } else {
                       _pageController.nextPage(
                         duration: const Duration(milliseconds: 400),
