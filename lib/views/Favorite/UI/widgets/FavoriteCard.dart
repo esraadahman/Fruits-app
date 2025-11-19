@@ -5,10 +5,12 @@ class FavoriteCard extends StatelessWidget {
     super.key,
     required this.height,
     required this.width,
+    required this.onTap,
   });
 
   final double height;
   final double width;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -68,25 +70,28 @@ class FavoriteCard extends StatelessWidget {
               ),
             ],
           ),
-          Container(
-            height: width * 0.07,
-            width: width * 0.09,
-            decoration: BoxDecoration(
-              color: AppColors.whiteColor,
-              shape: BoxShape.circle,
-              boxShadow: [
-                BoxShadow(
-                  color: AppColors.grayColor.withOpacity(.5),
-                  blurRadius: 3,
-                  spreadRadius: 1,
-                  offset: const Offset(0, 0),
-                ),
-              ],
-            ),
-            child: Icon(
-              Icons.close,
-              color: AppColors.blackColor.withOpacity(.6),
-              size: width * .05,
+          GestureDetector(
+            onTap: onTap,
+            child: Container(
+              height: width * 0.07,
+              width: width * 0.09,
+              decoration: BoxDecoration(
+                color: AppColors.whiteColor,
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.grayColor.withOpacity(.5),
+                    blurRadius: 3,
+                    spreadRadius: 1,
+                    offset: const Offset(0, 0),
+                  ),
+                ],
+              ),
+              child: Icon(
+                Icons.close,
+                color: AppColors.blackColor.withOpacity(.6),
+                size: width * .05,
+              ),
             ),
           )
         ],

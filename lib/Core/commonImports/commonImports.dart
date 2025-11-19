@@ -120,7 +120,7 @@ export 'package:fruits_app/views/Favorite/UI/page/Favorite.dart';
 export 'package:fruits_app/views/Home/UI/pages/Home.dart';
 export 'package:fruits_app/views/More/UI/page/moreScreen.dart';
 export 'package:fruits_app/views/MyOrders/UI/page/myOrders.dart';
-export 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+
 
 export 'package:fruits_app/views/OrderTracking/UI/widget/CancelOrderDialog.dart';
 export 'package:fruits_app/views/OrderTracking/UI/widget/timeline_tileWidget.dart';

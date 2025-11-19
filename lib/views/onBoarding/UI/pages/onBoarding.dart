@@ -35,19 +35,22 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             children: [
               Align(
                 alignment: Alignment.topRight,
-                child: TextButton(
-                  onPressed: () {
-                    context.navigateTo(Welcomescreen());
-                  },
-                  child: Text(
-                    currentIndex == pages.length - 1 ? "" : "Skip",
-                    style: TextStyle(
-                        color: AppColors.grayColor.withOpacity(0.6),
-                        fontSize: deviceInfo.orientation == Orientation.portrait
-                            ? deviceInfo.localWidth * 0.04
-                            : deviceInfo.localHeight * 0.06),
-                  ),
-                ),
+                child: currentIndex != pages.length - 1
+                    ? TextButton(
+                        onPressed: () {
+                          context.navigateTo(Welcomescreen());
+                        },
+                        child: Text(
+                          "Skip",
+                          style: TextStyle(
+                              color: AppColors.grayColor.withOpacity(0.6),
+                              fontSize:
+                                  deviceInfo.orientation == Orientation.portrait
+                                      ? deviceInfo.localWidth * 0.04
+                                      : deviceInfo.localHeight * 0.06),
+                        ),
+                      )
+                    : null,
               ),
               Expanded(
                 child: PageView.builder(

@@ -1,4 +1,6 @@
 import 'package:fruits_app/Core/commonImports/commonImports.dart';
+import 'package:fruits_app/Core/utils/widgets/ResponsiveLayout.dart';
+import 'package:fruits_app/views/ProductDetails/UI/widget/descriptionWidget.dart';
 
 class ProductDetails extends StatelessWidget {
   const ProductDetails({super.key});
@@ -37,115 +39,170 @@ class ProductDetails extends StatelessWidget {
             ),
           ],
         ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: width * .03),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ImageWidget(
-                  width: width,
-                  height: deviceInfo.orientation == Orientation.portrait
-                      ? height
-                      : height * 1.5,
-                  imagePath: "assets/images/product.png",
-                  sale: 10,
-                ),
-                size.height(height * .01),
-                Text(
-                  " Category Name",
-                  style: TextStyle(
-                      color: AppColors.button_Color,
-                      fontSize: deviceInfo.orientation == Orientation.portrait
-                          ? width * .04
-                          : width * 0.03,
-                      fontWeight: FontWeight.bold),
-                ),
-                size.height(height * .01),
-                ProductName(
-                  width: deviceInfo.orientation == Orientation.portrait
-                      ? width
-                      : width * .7,
-                  productname: " Product Name",
-                  price: "KD12.00",
-                  old_price: "KD14.00",
-                ),
-                size.height(height * .02),
-                descriptionWidget(
-                  width: deviceInfo.orientation == Orientation.portrait
-                      ? width
-                      : width * .6,
-                ),
-                size.height(height * .02),
-                SelectSection(
-                  width: deviceInfo.orientation == Orientation.portrait
-                      ? width
-                      : width * .7,
-                  options: [
-                    {'label': '50 Gram', 'price': '4.00 KD'},
-                    {'label': '100 Gram', 'price': '7.00 KD'},
-                    {'label': '250 Gram', 'price': '15.00 KD'},
-                  ],
-                  title: "weight",
-                  height: height,
-                ),
-                size.height(height * .02),
-                SelectSection(
-                  width: deviceInfo.orientation == Orientation.portrait
-                      ? width
-                      : width * .7,
-                  options: [
-                    {'label': '50 Gram', 'price': '4.00 KD'},
-                    {'label': '250 Gram', 'price': '15.00 KD'},
-                  ],
-                  title: "Addons",
-                  height: height,
-                ),
-                size.height(height * .02),
-                Padding(
-                  padding: EdgeInsets.only(left: width / 2),
-                  child: Customauthbutton(
-                      onTap: () {},
-                      textColor: AppColors.whiteColor,
-                      buttonText: "Add to Cart",
-                      iconData: Icons.shopping_basket_outlined,
-                      buttonColor: AppColors.button_Color,
-                      height: height,
-                      width: deviceInfo.orientation == Orientation.portrait
-                          ? width
-                          : width * 0.5),
-                ),
-                size.height(height * .03),
-              ],
-            ),
-          ),
-        ),
+        body: ResponsiveLayout(
+            portrait: PortraitProductDetails(width: width, height: height),
+            landscape: Column(children: [
+              Expanded(
+                  child: Row(
+                children: [
+                  Expanded(
+                      child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: width * .5 * .02),
+                    child: ImageWidget(
+                      width: width * .5,
+                      height: height * 2.5,
+                      imagePath: "assets/images/product.png",
+                      sale: 10,
+                    ),
+                  )),
+                  Expanded(
+                      child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: width * .5 * .02),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        size.height(height * .02),
+                        Text(
+                          " Category Name",
+                          style: TextStyle(
+                              color: AppColors.button_Color,
+                              fontSize: width * .5 * .04,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        size.height(height * .01),
+                        ProductName(
+                          width: width * .4,
+                          productname: " Product Name",
+                          price: "KD12.00",
+                          old_price: "KD14.00",
+                        ),
+                        size.height(height * .02),
+                        descriptionWidget(
+                          width: width * .5,
+                        ),
+                        size.height(height * .02),
+                        SelectSection(
+                          width: width * .5,
+                          options: [
+                            {'label': '50 Gram', 'price': '4.00 KD'},
+                            {'label': '100 Gram', 'price': '7.00 KD'},
+                            {'label': '250 Gram', 'price': '15.00 KD'},
+                          ],
+                          title: "weight",
+                          height: height,
+                        ),
+                        size.height(height * .02),
+                        SelectSection(
+                          width: width * .5,
+                          options: [
+                            {'label': '50 Gram', 'price': '4.00 KD'},
+                            {'label': '250 Gram', 'price': '15.00 KD'},
+                          ],
+                          title: "Addons",
+                          height: height,
+                        ),
+                        size.height(height * .02),
+                        Padding(
+                          padding: EdgeInsets.only(left: width * .5 / 2),
+                          child: Customauthbutton(
+                              onTap: () {},
+                              textColor: AppColors.whiteColor,
+                              buttonText: "Add to Cart",
+                              iconData: Icons.shopping_basket_outlined,
+                              buttonColor: AppColors.button_Color,
+                              height: height,
+                              width: width * .5),
+                        ),
+                      ],
+                    ),
+                  )),
+                ],
+              ))
+            ])),
       );
     });
   }
 }
 
-class descriptionWidget extends StatelessWidget {
-  const descriptionWidget({
+class PortraitProductDetails extends StatelessWidget {
+  const PortraitProductDetails({
     super.key,
     required this.width,
+    required this.height,
   });
 
   final double width;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: width * .02),
-      child: Text(
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore  sed do eiusmod tempor incididunt ut labore et dolore ",
-        style: TextStyle(
-          color: Colors.grey.shade800,
-          fontSize: width * 0.034,
-          height: 1.4,
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: width * .03),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ImageWidget(
+              width: width,
+              height: height,
+              imagePath: "assets/images/product.png",
+              sale: 10,
+            ),
+            size.height(height * .01),
+            Text(
+              " Category Name",
+              style: TextStyle(
+                  color: AppColors.button_Color,
+                  fontSize: width * .04,
+                  fontWeight: FontWeight.bold),
+            ),
+            size.height(height * .01),
+            ProductName(
+              width: width,
+              productname: " Product Name",
+              price: "KD12.00",
+              old_price: "KD14.00",
+            ),
+            size.height(height * .02),
+            descriptionWidget(
+              width: width,
+            ),
+            size.height(height * .02),
+            SelectSection(
+              width: width,
+              options: [
+                {'label': '50 Gram', 'price': '4.00 KD'},
+                {'label': '100 Gram', 'price': '7.00 KD'},
+                {'label': '250 Gram', 'price': '15.00 KD'},
+              ],
+              title: "weight",
+              height: height,
+            ),
+            size.height(height * .02),
+            SelectSection(
+              width: width,
+              options: [
+                {'label': '50 Gram', 'price': '4.00 KD'},
+                {'label': '250 Gram', 'price': '15.00 KD'},
+              ],
+              title: "Addons",
+              height: height,
+            ),
+            size.height(height * .02),
+            Padding(
+              padding: EdgeInsets.only(left: width / 2),
+              child: Customauthbutton(
+                  onTap: () {},
+                  textColor: AppColors.whiteColor,
+                  buttonText: "Add to Cart",
+                  iconData: Icons.shopping_basket_outlined,
+                  buttonColor: AppColors.button_Color,
+                  height: height,
+                  width: width),
+            ),
+            size.height(height * .03),
+          ],
         ),
-        maxLines: 3,
-        overflow: TextOverflow.ellipsis,
       ),
     );
   }

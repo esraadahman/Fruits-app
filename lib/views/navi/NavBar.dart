@@ -40,22 +40,11 @@ class _NavBarSectionState extends State<NavBarSection> {
 
     return Scaffold(
       body: pages[currentIndex],
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          color: AppColors.button_Color,
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(24),
-            topRight: Radius.circular(24),
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 10,
-            )
-          ],
+      bottomNavigationBar: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
         ),
-        padding: EdgeInsets.symmetric(
-            horizontal: width * 0.02, vertical: height * 0.01),
         child: GNav(
           gap: width * 0.02,
           activeColor: AppColors.button_Color,
@@ -90,6 +79,8 @@ class _NavBarSectionState extends State<NavBarSection> {
   GButton _buildNavItem(IconData icon, String label, double width,
       double height, Orientation orientation) {
     return GButton(
+      margin: EdgeInsets.symmetric(
+          horizontal: width * 0.02, vertical: height * 0.01),
       icon: icon,
       text: label,
       iconSize:

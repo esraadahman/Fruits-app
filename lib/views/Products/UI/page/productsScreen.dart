@@ -62,7 +62,7 @@ class landscapeProducts extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SellerCardProduct(
-                    height: height * 1.2,
+                    height: height * 1.8,
                     width: width * .5,
                     sellerName: "Seller name",
                     deliveryCharges: "0.5 KD",
@@ -114,7 +114,7 @@ class landscapeProducts extends StatelessWidget {
                                 ProductName: 'esraa',
                                 deliveryCharges: '200km',
                                 deliveryCharges_old: '300km',
-                                height: height * 1.9,
+                                height: height * 2,
                                 width: width * .5,
                                 imagePath: "assets/images/logo.png",
                                 salePresentage: 20,
@@ -201,7 +201,7 @@ class PortraitProducts extends StatelessWidget {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    context.navigateTo(ProductsScreen());
+                    context.navigateTo(ProductDetails());
                   },
                   child: CardProduct(
                     ProductName: 'esraa',
